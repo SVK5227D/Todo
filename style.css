@@ -1,0 +1,276 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+   background-color: #17181F;
+}
+
+.wrapper{
+  display: flex;
+  position: relative;
+}
+
+.sidebar{
+  width: 200px;
+  height: 100%;
+  background: #20212B;
+  padding: 30px 0px;
+  position: fixed;
+}
+
+.sideBarheading{
+    font-size: larger;
+    text-align: center;
+    margin:15px;
+  color: red;
+}
+
+.sidebar ul li{
+  padding: 15px;
+}    
+
+.sidebar ul li a{
+  color: #bdb8d7;
+  /* display: block; */
+}
+
+.sidebar ul li:hover{
+  background-color: #594f8d;
+}
+
+
+h3 {
+    text-align: center;
+    font-size: x-large;
+}
+
+#form {
+    padding-left: 5%;
+    padding-bottom: 2%;
+}
+
+.backgroundbody {
+    /*To stop the repection for background linergradient*/
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Algin the view in center*/
+    justify-content: center;
+    padding-top: 7%;
+}
+
+.inputfield {
+    height: 35px;
+    background-color: transparent;
+    width: 80%;
+    padding-left: 2%;
+    font-size: 15px;
+    border-radius: 14px;
+    color: #fff;
+}
+
+.outerinput {
+    border-radius: 5px;
+    width: 65%;
+}
+
+.outerinput2 {
+    border-radius: 2%;
+    margin-top: 18px;
+    color: #fff;
+    width: 65%;
+}
+#btn {
+    
+    height: 40px;
+    width: 50px;
+    font-size: large;
+    background-color: #EF7098;
+}
+
+#btn:hover {
+    border: 3px solid #EF7098;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+#btn:active {
+    transform: translateY(4px);
+    background-color: #36D72F;
+}
+
+
+.listview {    
+    border: 8px solid #17181F;
+    background-color: #68686b;
+    height: 50px;
+    display: flex;
+    padding: 5px;
+}
+
+.todoValue{
+    padding-left: 15px;
+}
+
+.btnedit {
+    position: absolute;
+    background-color: #EF7098;
+    right: 35%;
+    width: 40px;
+    height: 25px;
+}
+
+.btndelete {
+    position: absolute;
+    right: 30%;
+    background-color: #EF7098;
+    width: 40px;
+    height: 25px;
+}
+
+.btnedit:hover,
+.btndelete:hover {
+    background-color: #0089E2;
+    border: 2px solid black;
+}
+
+.icon{
+    position: fixed;
+    width: 10%;
+    height: 20%;
+    margin-top: 3.5%;
+    margin-left: 2%;
+    color: #ffffff;
+    
+}
+
+.view {
+    padding-left: 15%;
+    color: #fff;
+}
+
+.btnedit:active,
+.btndelete:active {
+    transform: translateY(4px);
+    background-color: #36D72F;
+}
+
+#listValue {
+    font-size: large;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+.check {
+    justify-content: left;
+}
+
+.toast {
+    position: absolute;
+    bottom: 50%;
+    right: 29%;
+    font-size: larger;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: rgb(234, 87, 87);
+    color: #000000;
+    font-weight: bolder;
+    border-radius: 5px;
+}
+
+.toast2 {
+    position: absolute;
+    bottom: 50%;
+    right: 29%;
+    font-size: larger;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: rgb(0, 231, 46);
+    color: #000000;
+    font-weight: bolder;
+    border-radius: 5px;
+}
+
+@media (max-width: 20000px) {
+    .backgroundbody {
+        margin-left: 30%;
+    }
+}
+
+@media (max-width: 600px) {
+    .backgroundbody {
+        margin-left: 10%;
+        padding-right: 15%;
+    }
+
+    #form {
+        display: flex;
+        margin-right: 12%;
+    }
+
+    #listValue {
+        padding-bottom: 10%;
+    }
+
+    .outerinput {
+        width: 100%;
+        right: 45%;
+
+    }
+
+    .outerinput2 {
+        width: 100%;
+        right: 45%;
+    }
+
+    .value {
+        margin-left: 15%;
+        margin-bottom: 2%;
+    }
+
+    .btnedit {
+        right: 30%;
+    }
+
+    .btndelete {
+        right: 20%;
+    }
+
+    .view {
+        padding-left: 13%;
+    }
+
+    .toast {
+        left: 45%;
+        width: 40%;
+        margin-bottom: 2%;
+    }
+
+    .toast2 {
+        left: 45%;
+        width: 40%;
+        margin-bottom: 2%;
+    }
+
+    .check {
+        margin-top: 4%;
+        left: 13%;
+    }
+}
+@media (max-width: 768px) {
+    .sidebar {
+        /* width: auto; */
+    }
+    .icon{
+        margin-top: 6.8%;
+        margin-left: 5%;
+    }
+}
