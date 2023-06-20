@@ -273,4 +273,7 @@ h3 {
         margin-top: 6.8%;
         margin-left: 5%;
     }
+    .backgroundbody{
+        justify-content: center;
+    }
 }
