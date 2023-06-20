@@ -113,7 +113,7 @@ function addingTodo() {
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
         data-action="check"
         ></i> 
-        <p data-action="check">${todo.value}</p>
+        <p class="value" data-action="check">${todo.value}</p>
         <button class="btnedit bi bi-pencil-square" data-action="edit"></button>
         <button class="btndelete bi bi-trash" data-action="delete"></button>          
         </div>`;
@@ -127,7 +127,7 @@ function addingTodo() {
 
 function listCompleted(){
     if (completedList.length == 0) {
-        forward2.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
+        forward2.innerHTML = '<center style="font-size:x-large;">There is no Completed task</center>';
         document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
         return;
     }
