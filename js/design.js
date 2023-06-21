@@ -16,7 +16,6 @@ let EditList = -1;
 let msgText;
 //Calling function to getvalue in localstorage
 addingTodo();
-//
 listCompleted();
 //submit
 form.addEventListener('submit', function (event) {
@@ -94,7 +93,7 @@ function addingTodo(id) {
     }
     // Clear the list before enter the value
     forward.innerHTML = '';
-    // Adding values to list
+    // Adding values to list based on task completion
     designList.forEach((todo, index) => {
         if(todo.checked == true){
             console.log(todo.index);
@@ -168,8 +167,7 @@ forward.addEventListener('click', (event) => {
     action == 'delete' && deleteList(wl);
 });
 
-// -------------------------------      Completed Function                                 ------------------------------------------
-
+// -------------------------------      Completed Function              ------------------------------------------
 function checkList(wl) {
     designList = designList.map((todo, index) => ({
         ...todo,
@@ -177,10 +175,7 @@ function checkList(wl) {
     }));
     addingTodo(wl);
     listCompleted();
-}
-    
-    
-
+} 
 
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
@@ -228,6 +223,7 @@ function popupNotification(msg, msgText) {
     }
 }
 
+//-------------------------          Menu Button  -----------------------------------
 function menuButton(){
     var x = document.getElementById("sidebar");
     if (x.style.display === "block") {
