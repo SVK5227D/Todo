@@ -18,7 +18,6 @@ let msgText;
 addingTodo();
 //
 listCompleted();
-
 //submit
 form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -87,10 +86,10 @@ function add() {
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
-function addingTodo() {
+function addingTodo(id) {
     if (designList.length == 0) {
         forward.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
-        document.getElementById('taskValue').innerHTML = "Tasks - " + completedListLength;
+        document.getElementById('taskValue').innerHTML = "Tasks - " + listLength;
         return;
     }
     // Clear the list before enter the value
@@ -100,12 +99,14 @@ function addingTodo() {
         if(todo.checked == true){
             console.log(todo.index);
             designCompletedList.push(todo);
-            designList.pop(todo);
+            designList = designList.filter((h, index) => id != index);
             localStorage.setItem('designList', JSON.stringify(designList));
             localStorage.setItem('designCompletedList', JSON.stringify(designCompletedList));
+            listLength-=1
+            completedListLength+=1
             document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
-            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
-            
+            console.log('List length'+listLength);
+            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;            
         }
         forward.innerHTML += `
         <div class="listview" id=${index}>
@@ -141,7 +142,7 @@ function listCompleted(){
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
         data-action="check"
         ></i> 
-        <p class="${todo.checked ? 'checked' : ' '}" data-action="check">${todo.value}</p>
+        <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
         </div>`;
     }
     );
@@ -174,7 +175,7 @@ function checkList(wl) {
         ...todo,
         checked: index == wl ? !todo.checked : todo.checked,
     }));
-    addingTodo();
+    addingTodo(wl);
     listCompleted();
 }
     
@@ -227,7 +228,7 @@ function popupNotification(msg, msgText) {
     }
 }
 
-function myFunction(){
+function menuButton(){
     var x = document.getElementById("sidebar");
     if (x.style.display === "block") {
       x.style.display = "none";

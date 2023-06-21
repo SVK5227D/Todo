@@ -6,10 +6,10 @@ var input = document.getElementById("input");
 var forward = document.getElementById("list");
 var forward2  =document.getElementById("completedList")
 //Getting the data form localstorage
-let personalList = JSON.parse(localStorage.getItem('personalList')) || [];
-let listLength = personalList.length;
-let personalCompletedList = JSON.parse(localStorage.getItem('personalCompletedList')) || [];
-let completedListLength = personalCompletedList.length;
+let schoolList = JSON.parse(localStorage.getItem('schoolList')) || [];
+let listLength = schoolList.length;
+let schoolCompletedList = JSON.parse(localStorage.getItem('schoolCompletedList')) || [];
+let completedListLength = schoolCompletedList.length;
 //array to store
 let EditList = -1;
 // Passing empty value for toast message
@@ -18,7 +18,6 @@ let msgText;
 addingTodo();
 //
 listCompleted();
-
 //submit
 form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -29,15 +28,15 @@ form.addEventListener('submit', function (event) {
     //
     listCompleted();
     //Adding the data into local storage
-    localStorage.setItem('personalList', JSON.stringify(personalList));
-    localStorage.setItem('personalCompletedList',JSON.stringify(personalCompletedList));
+    localStorage.setItem('schoolList', JSON.stringify(schoolList));
+    localStorage.setItem('schoolCompletedList',JSON.stringify(schoolCompletedList));
 });
 
 //-----------------         Function to add a value               ------------------
 function add() {
     let inputValue = input.value;
     //checking duplicate value
-    var isDuplicate = personalList.some((store) => store.value.toUpperCase() == inputValue.toUpperCase());
+    var isDuplicate = schoolList.some((store) => store.value.toUpperCase() == inputValue.toUpperCase());
     //Checking the input is empty or not empty
     if (inputValue.length == 0) {
         msgText = "Your entered empty text!!!!!!!!";
@@ -59,7 +58,7 @@ function add() {
     //Adding and editing
     else {
         if (EditList >= 0) {
-            personalList = personalList.map((q, index) => ({
+            schoolList = schoolList.map((q, index) => ({
                 ...q,
                 value: index == EditList ? inputValue : q.value,
             }))
@@ -73,7 +72,7 @@ function add() {
         }
         else {
             // To store the value
-            personalList.push({
+            schoolList.push({
                 value: inputValue,
                 checked: false
             });
@@ -87,25 +86,27 @@ function add() {
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
-function addingTodo() {
-    if (personalList.length == 0) {
+function addingTodo(id) {
+    if (schoolList.length == 0) {
         forward.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
-        document.getElementById('taskValue').innerHTML = "Tasks - " + completedListLength;
+        document.getElementById('taskValue').innerHTML = "Tasks - " + listLength;
         return;
     }
     // Clear the list before enter the value
     forward.innerHTML = '';
     // Adding values to list
-    personalList.forEach((todo, index) => {
+    schoolList.forEach((todo, index) => {
         if(todo.checked == true){
             console.log(todo.index);
-            personalCompletedList.push(todo);
-            personalList.pop(todo);
-            localStorage.setItem('personalList', JSON.stringify(personalList));
-            localStorage.setItem('personalCompletedList', JSON.stringify(personalCompletedList));
+            schoolCompletedList.push(todo);
+            schoolList = schoolList.filter((h, index) => id != index);
+            localStorage.setItem('schoolList', JSON.stringify(schoolList));
+            localStorage.setItem('schoolCompletedList', JSON.stringify(schoolCompletedList));
+            listLength-=1
+            completedListLength+=1
             document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
-            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
-            
+            console.log('List length'+listLength);
+            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;            
         }
         forward.innerHTML += `
         <div class="listview" id=${index}>
@@ -126,7 +127,7 @@ function addingTodo() {
 }
 
 function listCompleted(){
-    if (personalCompletedList.length == 0) {
+    if (schoolCompletedList.length == 0) {
         forward2.innerHTML = '<center style="font-size:x-large;">There is no Completed task</center>';
         document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
         return;
@@ -134,14 +135,14 @@ function listCompleted(){
     // Clear the list before enter the value
     forward2.innerHTML = '';
     // Adding values to list
-    personalCompletedList.forEach((todo, index) => {
+    schoolCompletedList.forEach((todo, index) => {
         forward2.innerHTML += `
         <div class="listview" id=${index}>
         <i 
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
         data-action="check"
         ></i> 
-        <p class="${todo.checked ? 'checked' : ' '}" data-action="check">${todo.value}</p>
+        <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
         </div>`;
     }
     );
@@ -170,11 +171,11 @@ forward.addEventListener('click', (event) => {
 // -------------------------------      Completed Function                                 ------------------------------------------
 
 function checkList(wl) {
-    personalList = personalList.map((todo, index) => ({
+    schoolList = schoolList.map((todo, index) => ({
         ...todo,
         checked: index == wl ? !todo.checked : todo.checked,
     }));
-    addingTodo();
+    addingTodo(wl);
     listCompleted();
 }
     
@@ -184,7 +185,7 @@ function checkList(wl) {
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
     document.getElementById('btn').innerHTML = "save";
-    input.value = personalList[wl].value;
+    input.value = schoolList[wl].value;
     EditList = wl;
 }
 
@@ -193,7 +194,7 @@ function deleteList(wl) {
     var con = confirm("Are you sure you want to delete this todo?");
     //Checking condition is true or false
     if (con) {
-        personalList = personalList.filter((h, index) => wl != index);
+        schoolList = schoolList.filter((h, index) => wl != index);
         //Calling Function changes in list
         listLength -= 1;
         addingTodo();
@@ -202,7 +203,7 @@ function deleteList(wl) {
         }
         msgText = "Todo has been deleted";
         popupNotification(1, msgText)
-        localStorage.setItem('personalList', JSON.stringify(personalList));
+        localStorage.setItem('schoolList', JSON.stringify(schoolList));
     }
 }
 
@@ -227,7 +228,7 @@ function popupNotification(msg, msgText) {
     }
 }
 
-function myFunction(){
+function menuButton(){
     var x = document.getElementById("sidebar");
     if (x.style.display === "block") {
       x.style.display = "none";
