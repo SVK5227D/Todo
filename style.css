@@ -32,7 +32,7 @@ body{
 }
 
 .sidebar ul li{
-  padding: 15px;
+  padding: 5%;
 }    
 
 .sidebar ul li a{
@@ -75,7 +75,7 @@ h3 {
     width: 80%;
     padding-left: 2%;
     font-size: 15px;
-    border-radius: 14px;
+    border-radius: 8%;
     color: #fff;
 }
 
@@ -145,7 +145,7 @@ h3 {
 
 .icon{
     position: fixed;
-    margin-top: 3.5%;
+    margin-top: 3%;
     margin-left: 2%;
     color: #ffffff;    
 }
@@ -153,6 +153,10 @@ h3 {
 .view {
     padding-left: 15%;
     color: #fff;
+}
+
+.checked{
+    text-decoration: line-through;
 }
 
 .btnedit:active,
@@ -206,13 +210,78 @@ h3 {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+    .backgroundbody {
+        margin-left: 10%;
+        padding-right: 15%;
+    }
+
+    #form {
+        display: flex;
+        margin-right: 12%;
+    }
+
+    #listValue {
+        padding-bottom: 10%;
+    }
+
+    .outerinput {
+        width: 100%;
+        right: 45%;
+
+    }
+
+    .outerinput2 {
+        width: 100%;
+        right: 45%;
+    }
+
+    .value {
+        margin-left: 15%;
+        margin-bottom: 2%;
+    }
+
+    .btnedit {
+        right: 30%;
+    }
+
+    .btndelete {
+        right: 20%;
+    }
+
+    .view {
+        padding-left: 13%;
+    }
+
+    .toast {
+        left: 45%;
+        width: 40%;
+        margin-bottom: 2%;
+    }
+
+    .toast2 {
+        left: 45%;
+        width: 40%;
+        margin-bottom: 2%;
+    }
+
+    .check {
+        margin-top: 4%;
+        left: 13%;
+    }
+
     .sidebar {
         width: auto;
     }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 35%;
+    }
     .icon{
         margin-top: 6.8%;
-        margin-left: 8%;
+        margin-left: 4.5%;
     }
     .backgroundbody{
         margin-top: 20%;

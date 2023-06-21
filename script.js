@@ -87,7 +87,7 @@ function add() {
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
-function addingTodo() {
+function addingTodo(id) {
     if (list.length == 0) {
         forward.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
         document.getElementById('taskValue').innerHTML = "Tasks - " + completedListLength;
@@ -100,10 +100,10 @@ function addingTodo() {
         if(todo.checked == true){
             console.log(todo.index);
             completedList.push(todo);
-            list.pop(todo);
+            list = list.filter((h, index) => id != index);
             localStorage.setItem('list', JSON.stringify(list));
             localStorage.setItem('completedList', JSON.stringify(completedList));
-            document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
+            document.getElementById('taskValue').innerHTML = "Task -  " + list.length;
             document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
             
         }
@@ -141,7 +141,7 @@ function listCompleted(){
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
         data-action="check"
         ></i> 
-        <p class="${todo.checked ? 'checked' : ' '}" data-action="check">${todo.value}</p>
+        <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
         </div>`;
     }
     );
@@ -174,7 +174,7 @@ function checkList(wl) {
         ...todo,
         checked: index == wl ? !todo.checked : todo.checked,
     }));
-    addingTodo();
+    addingTodo(wl);
     listCompleted();
 }
     
