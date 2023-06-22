@@ -4,7 +4,7 @@ var form = document.getElementById("form");
 var input = document.getElementById("input");
 //getting id to listing value in html
 var forward = document.getElementById("list");
-var forward2  =document.getElementById("completedList")
+var forward2 = document.getElementById("completedList")
 //Getting the data form localstorage
 let List = JSON.parse(localStorage.getItem('List')) || [];
 let listLength = List.length;
@@ -29,12 +29,12 @@ form.addEventListener('submit', function (event) {
     listCompleted();
     //Adding the data into local storage
     localStorage.setItem('List', JSON.stringify(List));
-    localStorage.setItem('CompletedList',JSON.stringify(CompletedList));
+    localStorage.setItem('CompletedList', JSON.stringify(CompletedList));
 });
 
 //-----------------         Function to add a value               ------------------
 function add() {
-    let inputValue = input.value;
+    let inputValue = input.value.trim();
     //checking duplicate value
     var isDuplicate = List.some((store) => store.value.toUpperCase() == inputValue.toUpperCase());
     //Checking the input is empty or not empty
@@ -96,17 +96,17 @@ function addingTodo(id) {
     forward.innerHTML = '';
     // Adding values to list
     List.forEach((todo, index) => {
-        if(todo.checked == true){
+        if (todo.checked == true) {
             console.log(todo.index);
             CompletedList.push(todo);
             List = List.filter((h, index) => id != index);
             localStorage.setItem('List', JSON.stringify(List));
             localStorage.setItem('CompletedList', JSON.stringify(CompletedList));
-            listLength-=1
-            completedListLength+=1
+            listLength -= 1
+            completedListLength += 1
             document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
-            console.log('List length'+listLength);
-            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;            
+            console.log('List length' + listLength);
+            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
         }
         forward.innerHTML += `
         <div class="listview" id=${index}>
@@ -126,7 +126,7 @@ function addingTodo(id) {
     }
 }
 
-function listCompleted(){
+function listCompleted(id) {
     if (CompletedList.length == 0) {
         forward2.innerHTML = '<center style="font-size:x-large;">There is no Completed task</center>';
         document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
@@ -136,13 +136,29 @@ function listCompleted(){
     forward2.innerHTML = '';
     // Adding values to list
     CompletedList.forEach((todo, index) => {
+        if (todo.checked == false) {
+            List.push(todo);
+            CompletedList = CompletedList.filter((h, index) => id != index);
+            localStorage.setItem('List', JSON.stringify(List));
+            localStorage.setItem('CompletedList', JSON.stringify(CompletedList));
+            listLength += 1
+            completedListLength -= 1
+            document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
+            console.log('List length' + listLength);
+            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
+            if (CompletedList.length == 0) {
+                forward2.innerHTML = '<center style="font-size:x-large;">There is no Completed task</center>';
+                document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
+                return;
+            }
+        }
         forward2.innerHTML += `
         <div class="listview" id=${index}>
         <i 
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
-        data-action="check"
+        data-action="checkCompleted"
         ></i> 
-        <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
+        <p class="value" data-action="checkCompleted">${todo.value}</p>
         </div>`;
     }
     );
@@ -164,9 +180,31 @@ forward.addEventListener('click', (event) => {
     var action = target.dataset.action;
     //Calling function to Edit nor delete
     action == 'check' && checkList(wl);
+    action == 'checkCompleted' && completedMove(wl)
     action == 'edit' && editList(wl);
     action == 'delete' && deleteList(wl);
 });
+
+forward2.addEventListener('click', (event) => {
+    var target = event.target;
+    var click = target.parentNode;
+    if (click.className != 'listview') return;
+    // Getting id to Edit or Delete the value in list
+    var wl = click.id;
+    // Getting action form the list button 
+    var action = target.dataset.action;
+    //Calling function to Edit nor delete
+    action == 'checkCompleted' && completedMove(wl)
+});
+
+function completedMove(wl) {
+    CompletedList = CompletedList.map((todo, index) => ({
+        ...todo,
+        checked: index == wl ? !todo.checked : todo.checked,
+    }));
+    addingTodo(wl);
+    listCompleted(wl);
+}
 
 // -------------------------------      Completed Function                                 ------------------------------------------
 
@@ -178,8 +216,8 @@ function checkList(wl) {
     addingTodo(wl);
     listCompleted();
 }
-    
-    
+
+
 
 
 // ------------------------------            Editlist function          --------------------------------------------
@@ -199,7 +237,7 @@ function deleteList(wl) {
         listLength -= 1;
         addingTodo();
         if (listLength == 0) {
-            document.getElementById('listValue').innerHTML = " ";
+            document.getElementById('listValue').innerHTML = "";
         }
         msgText = "Todo has been deleted";
         popupNotification(1, msgText)
@@ -225,14 +263,5 @@ function popupNotification(msg, msgText) {
         setTimeout(() => {
             toast.remove();
         }, 1300);
-    }
-}
-
-function menuButton(){
-    var x = document.getElementById("sidebar");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
     }
 }
