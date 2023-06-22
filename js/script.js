@@ -88,7 +88,7 @@ function add() {
 // --------------                 Functio to add a todo's --------------------------------------------
 function addingTodo(id) {
     if (List.length == 0) {
-        forward.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
+        forward.innerHTML = '<center class ="valueMessage">Your Todo List has been empty</center>';
         document.getElementById('taskValue').innerHTML = "Tasks - " + listLength;
         return;
     }
@@ -107,16 +107,21 @@ function addingTodo(id) {
             document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
             console.log('List length' + listLength);
             document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
+            if (List.length == 0) {
+                forward.innerHTML = '<center class ="valueMessage">Your Todo List has been empty</center>';
+                document.getElementById('taskValue').innerHTML = "Tasks - " + listLength;
+                return;
+            }
         }
         forward.innerHTML += `
         <div class="listview" id=${index}>
         <i 
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
-        data-action="check"
+        data-action="check"        
         ></i> 
         <p class="value" data-action="check">${todo.value}</p>
-        <button class="btnedit bi bi-pencil-square" data-action="edit"></button>
-        <button class="btndelete bi bi-trash" data-action="delete"></button>          
+        <button id="editbutton" class="btnedit bi bi-pencil-square" data-action="edit"></button>
+        <button id="deletebutton" class="btndelete bi bi-trash" data-action="delete"></button>   
         </div>`;
     }
     );
@@ -124,11 +129,12 @@ function addingTodo(id) {
     if (listLength > 0) {
         document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
     }
+    // listCompleted();
 }
 
 function listCompleted(id) {
     if (CompletedList.length == 0) {
-        forward2.innerHTML = '<center style="font-size:x-large;">There is no Completed task</center>';
+        forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
         document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
         return;
     }
@@ -147,7 +153,7 @@ function listCompleted(id) {
             console.log('List length' + listLength);
             document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
             if (CompletedList.length == 0) {
-                forward2.innerHTML = '<center style="font-size:x-large;">There is no Completed task</center>';
+                forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
                 document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
                 return;
             }
@@ -158,7 +164,7 @@ function listCompleted(id) {
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
         data-action="checkCompleted"
         ></i> 
-        <p class="value" data-action="checkCompleted">${todo.value}</p>
+        <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
         </div>`;
     }
     );
@@ -174,16 +180,29 @@ forward.addEventListener('click', (event) => {
     var target = event.target;
     var click = target.parentNode;
     if (click.className != 'listview') return;
+    // if(click.className != 'listview') return;
     // Getting id to Edit or Delete the value in list
     var wl = click.id;
     // Getting action form the list button 
     var action = target.dataset.action;
     //Calling function to Edit nor delete
     action == 'check' && checkList(wl);
-    action == 'checkCompleted' && completedMove(wl)
     action == 'edit' && editList(wl);
     action == 'delete' && deleteList(wl);
 });
+
+forward.addEventListener('click', (event) => {
+    var target = event.target;
+    var click = target.parentNode;
+    if (click.className != 'button') return;
+    // if(click.className != 'listview') return;
+    // Getting id to Edit or Delete the value in list
+    var wl = click.id;
+    // Getting action form the list button 
+    var action = target.dataset.action;
+    //Calling function to Edit nor delete
+});
+
 
 forward2.addEventListener('click', (event) => {
     var target = event.target;
@@ -194,7 +213,7 @@ forward2.addEventListener('click', (event) => {
     // Getting action form the list button 
     var action = target.dataset.action;
     //Calling function to Edit nor delete
-    action == 'checkCompleted' && completedMove(wl)
+    action == 'checkCompleted' && completedMove(wl);
 });
 
 function completedMove(wl) {
@@ -202,8 +221,9 @@ function completedMove(wl) {
         ...todo,
         checked: index == wl ? !todo.checked : todo.checked,
     }));
-    addingTodo(wl);
+    addingTodo();
     listCompleted(wl);
+    listCompleted();
 }
 
 // -------------------------------      Completed Function                                 ------------------------------------------
@@ -217,11 +237,9 @@ function checkList(wl) {
     listCompleted();
 }
 
-
-
-
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
+    console.log(List[wl]);
     document.getElementById('btn').innerHTML = "save";
     input.value = List[wl].value;
     EditList = wl;
@@ -237,7 +255,8 @@ function deleteList(wl) {
         listLength -= 1;
         addingTodo();
         if (listLength == 0) {
-            document.getElementById('listValue').innerHTML = "";
+            List = [];
+            localStorage.setItem('List', JSON.stringify(List));
         }
         msgText = "Todo has been deleted";
         popupNotification(1, msgText)

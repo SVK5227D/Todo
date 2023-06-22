@@ -1,3 +1,10 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -43,12 +50,9 @@ body {
 
 #form {
     padding-left: 5%;
-    padding-bottom: 2%;
 }
 
-.value {
-    margin-left: 3.5%;
-}
+
 
 .backgroundbody {
     /*To stop the repection for background linergradient*/
@@ -57,7 +61,7 @@ body {
     background-attachment: fixed;
     /* Algin the view in center*/
     justify-content: center;
-    padding-top: 7%;
+    padding-top: 2%;
 }
 
 .inputfield {
@@ -75,14 +79,10 @@ body {
     width: 65%;
 }
 
-.outerinput2 {
-    margin-top: 6%;
-    border-radius: 2%;
-    color: #fff;
-    width: 65%;
-}
+
 
 #btn {
+    cursor: pointer;
     border-radius: 15px;
     height: 40px;
     width: 50px;
@@ -101,26 +101,18 @@ body {
     background-color: #36D72F;
 }
 
-
-
-.todoValue {
-    /* padding-left: 15px; */
-}
-
-
-
 .btnedit:hover,
 .btndelete:hover {
     background-color: #0089E2;
     border: 2px solid black;
 }
 
-.icon {
+/* .icon {
     position: fixed;
     margin-top: 3%;
     margin-left: 2%;
     color: #ffffff;
-}
+} */
 
 .view {
     padding-left: 15%;
@@ -147,7 +139,7 @@ body {
 
 .check {
     justify-content: left;
-    color: #EF7098;
+    color: yellow;
 }
 
 .sidebarIcon {
@@ -155,19 +147,23 @@ body {
 }
 
 
-@media (max-width: 2000px) {
-    .mobileView {
-        display: none;
-    }
 
+@media (max-width: 1400px) {
     .backgroundbody {
         margin-left: 30%;
+    }
+
+    .scroll {
+        width: 90%;
+        height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .toast {
         position: absolute;
         left: 35%;
-        top: 31%;
+        top: 22%;
         font-size: larger;
         color: rgb(234, 87, 87);
         font-weight: bolder;
@@ -177,7 +173,7 @@ body {
     .toast2 {
         position: absolute;
         left: 35%;
-        top: 31%;
+        top: 22%;
         font-size: larger;
         color: rgb(0, 231, 46);
         font-weight: bolder;
@@ -191,28 +187,39 @@ body {
         font-size: x-large;
     }
 
-    .btnedit {
+    .valueMessage {
+        font-size: larger;
+    }
+
+    #deletebutton{
         position: absolute;
+        left: 85%;
+    }
+    
+    #editbutton{
+        position: absolute;
+        left: 75%;
+    }
+
+    .btnedit {
+        cursor: pointer;
         background-color: #EF7098;
-        right: 30%;
         width: 40px;
         height: 25px;
     }
 
     .btndelete {
-        position: absolute;
-        right: 26%;
+        cursor: pointer;
         background-color: #EF7098;
         width: 40px;
         height: 25px;
     }
 
     .listview {
-        justify-content: flex-start;
+        display: flex;
+        position: relative;
         border: 8px solid #17181F;
         background-color: #68686b;
-        /* height: 60px; */
-        display: flex;
         padding: 2.5%;
         border-radius: 25px;
     }
@@ -224,58 +231,81 @@ body {
         padding: 30px 0px;
         position: fixed;
     }
+
+    .outerinput2 {
+        margin-top: 6%;
+        border-radius: 2%;
+        color: #fff;
+        width: 65%;
+    }
+    .value{
+        margin-left: 2%;
+    }
 }
 
-
-@media only screen and (max-width: 700px) {
-    .mobileView{
-        display: inline;
-    }
-    .webview {
+@media (max-width: 767px) {
+    .sidebar {
         display: none;
+    }
+
+    
+    #deletebutton{
+        position: absolute;
+        left: 82%;
+    }
+    
+    #editbutton{
+        position: absolute;
+        left: 65%;
+    }
+
+    .value {
+        margin-left: 3.5%;
+        max-width: 45%;
+    }
+
+    .outerinput2 {
+        margin-top: 10%;
+        border-radius: 2%;
+        color: #fff;
+        width: 65%;
+    }
+
+    .webview {
+        grid-template-columns: 1fr;
+    }
+
+    .scroll {
+        width: 150%;
+        height: 350px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .outerinput2 h3{
+        margin-left: 40%;
+        font-size: 20px;
     }
 
     .backgroundbody {
-        display: none;
+        margin-left: 0;
+        padding: 20px;
     }
 
-    .Mobilewrapper {
-        display: block;
-    }
-
-    .sidebar {
-        display: block;
-    }
-
-    .bi {
-        display: inline;
-    }
-
-    .Mobilewrapper {
-        display: inline;
-        width: 100%;
-    }
-
-    .icon {
-        margin-top: 5%;
-        margin-left: 5%;
+    .outerinput {
+        /* margin-left: %;  */
+        border-radius: 5px;
+        width: auto;
     }
 
     .sidebarIcon {
         margin-left: 15px;
     }
 
-    .outerinput {
-        /* margin-left: %; */
-        border-radius: 5px;
-        width: auto;
-    }
-
-    .backgroundbody {
-        display: none;
+    /* .icon {
+        margin-top: 5%;
         margin-left: 5%;
-    }
-
+    } */
 
     .inputfield {
         height: 35px;
@@ -300,23 +330,21 @@ body {
 
     .toast2 {
         position: absolute;
-        left: 35%;
-        top: 31%;
-        font-size: larger;
+        left: 13%;
+        top: 12%;
+        font-size: medium;
         color: rgb(0, 231, 46);
         font-weight: bolder;
         border-radius: 5px;
     }
 
     .listview {
-        /* justify-content: flex-start; */
         border: 8px solid #17181F;
         padding: 45%;
         background-color: #68686b;
-        height: 30px;
-        width: 140%;
-        display: flex;
-        padding: 2.5%;
+        height: auto;
+        width: auto;
+        padding: 5.5%;
         border-radius: 25px;
     }
 
@@ -330,18 +358,24 @@ body {
     }
 
     .btnedit {
-        position: fixed;
         background-color: #EF7098;
-        right: 20%;
+        right: 25%;
         width: 40px;
         height: 25px;
     }
 
+    .valueMessage {
+        margin-top: 12%;
+        margin-left: 15%;
+    }
+
     .btndelete {
-        position: fixed;
-        right: 10%;
+        right: 15%;
         background-color: #EF7098;
         width: 40px;
         height: 25px;
+    }
+    .view{
+        padding-left: 10%;
     }
 }
