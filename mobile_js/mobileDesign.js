@@ -6,10 +6,10 @@ var input = document.getElementById("input");
 var forward = document.getElementById("list");
 var forward2 = document.getElementById("completedList")
 //Getting the data form localstorage
-let personalList = JSON.parse(localStorage.getItem('personalList')) || [];
-let listLength = personalList.length;
-let personalCompletedList = JSON.parse(localStorage.getItem('personalCompletedList')) || [];
-let completedListLength = personalCompletedList.length;
+let designList = JSON.parse(localStorage.getItem('designList')) || [];
+let listLength = designList.length;
+let designCompletedList = JSON.parse(localStorage.getItem('designCompletedList')) || [];
+let completedListLength = designCompletedList.length;
 //array to store
 let EditList = -1;
 // Passing empty value for toast message
@@ -27,15 +27,15 @@ form.addEventListener('submit', function (event) {
     //
     listCompleted();
     //Adding the data into local storage
-    localStorage.setItem('personalList', JSON.stringify(personalList));
-    localStorage.setItem('personalCompletedList', JSON.stringify(personalCompletedList));
+    localStorage.setItem('designList', JSON.stringify(designList));
+    localStorage.setItem('designCompletedList', JSON.stringify(designCompletedList));
 });
 
 //-----------------         Function to add a value               ------------------
 function add() {
     let inputValue = input.value.trim();
     //checking duplicate value
-    var isDuplicate = personalList.some((store) => store.value.toUpperCase() == inputValue.toUpperCase());
+    var isDuplicate = designList.some((store) => store.value.toUpperCase() == inputValue.toUpperCase());
     //Checking the input is empty or not empty
     if (inputValue.length == 0) {
         msgText = "Your entered empty text!!!!!!!!";
@@ -57,7 +57,7 @@ function add() {
     //Adding and editing
     else {
         if (EditList >= 0) {
-            personalList = personalList.map((q, index) => ({
+            designList = designList.map((q, index) => ({
                 ...q,
                 value: index == EditList ? inputValue : q.value,
             }))
@@ -71,7 +71,7 @@ function add() {
         }
         else {
             // To store the value
-            personalList.push({
+            designList.push({
                 value: inputValue,
                 checked: false
             });
@@ -82,12 +82,12 @@ function add() {
             popupNotification(1, msgText);
         }
     }
-    
+    document.getElementById("popup").style.display = "none";
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
 function addingTodo(id) {
-    if (personalList.length == 0) {
+    if (designList.length == 0) {
         forward.innerHTML = '<center class ="valueMessage">Your Todo List has been empty</center>';
         document.getElementById('taskValue').innerHTML = "Tasks - " + listLength;
         return;
@@ -95,18 +95,18 @@ function addingTodo(id) {
     // Clear the list before enter the value
     forward.innerHTML = '';
     // Adding values to list
-    personalList.forEach((todo, index) => {
+    designList.forEach((todo, index) => {
         if (todo.checked == true) {
-            personalCompletedList.push(todo);
-            personalList = personalList.filter((h, index) => id != index);
-            localStorage.setItem('personalList', JSON.stringify(personalList));
-            localStorage.setItem('personalCompletedList', JSON.stringify(personalCompletedList));
+            designCompletedList.push(todo);
+            designList = designList.filter((h, index) => id != index);
+            localStorage.setItem('designList', JSON.stringify(designList));
+            localStorage.setItem('designCompletedList', JSON.stringify(designCompletedList));
             listLength -= 1
             completedListLength += 1
             document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
             console.log('List length' + listLength);
             document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
-            if (personalList.length == 0) {
+            if (designList.length == 0) {
                 forward.innerHTML = '<center class ="valueMessage">Your Todo List has been empty</center>';
                 document.getElementById('taskValue').innerHTML = "Tasks - " + listLength;
                 return;
@@ -132,7 +132,7 @@ function addingTodo(id) {
 }
 
 function listCompleted(id) {
-    if (personalCompletedList.length == 0) {
+    if (designCompletedList.length == 0) {
         forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
         document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
         return;
@@ -140,18 +140,18 @@ function listCompleted(id) {
     // Clear the list before enter the value
     forward2.innerHTML = '';
     // Adding values to list
-    personalCompletedList.forEach((todo, index) => {
+    designCompletedList.forEach((todo, index) => {
         if (todo.checked == false) {
-            personalList.push(todo);
-            personalCompletedList = personalCompletedList.filter((h, index) => id != index);
-            localStorage.setItem('personalList', JSON.stringify(personalList));
-            localStorage.setItem('personalCompletedList', JSON.stringify(personalCompletedList));
+            designList.push(todo);
+            designCompletedList = designCompletedList.filter((h, index) => id != index);
+            localStorage.setItem('designList', JSON.stringify(designList));
+            localStorage.setItem('designCompletedList', JSON.stringify(designCompletedList));
             listLength += 1
             completedListLength -= 1
             document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
             console.log('List length' + listLength);
             document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
-            if (personalCompletedList.length == 0) {
+            if (designCompletedList.length == 0) {
                 forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
                 document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
                 return;
@@ -204,7 +204,7 @@ forward2.addEventListener('click', (event) => {
 });
 
 function completedMove(wl) {
-    personalCompletedList = personalCompletedList.map((todo, index) => ({
+    designCompletedList = designCompletedList.map((todo, index) => ({
         ...todo,
         checked: index == wl ? !todo.checked : todo.checked,
     }));
@@ -216,7 +216,7 @@ function completedMove(wl) {
 // -------------------------------      Completed Function                                 ------------------------------------------
 
 function checkList(wl) {
-    personalList = personalList.map((todo, index) => ({
+    designList = designList.map((todo, index) => ({
         ...todo,
         checked: index == wl ? !todo.checked : todo.checked,
     }));
@@ -226,9 +226,9 @@ function checkList(wl) {
 
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
-    
+    document.getElementById("popup").style.display = "block";
     document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
-    input.value = personalList[wl].value;
+    input.value = designList[wl].value;
     EditList = wl;
 }
 
@@ -237,17 +237,17 @@ function deleteList(wl) {
     var con = confirm("Are you sure you want to delete this todo?");
     //Checking condition is true or false
     if (con) {
-        personalList = personalList.filter((h, index) => wl != index);
+        designList = designList.filter((h, index) => wl != index);
         //Calling Function changes in list
         listLength -= 1;
         addingTodo();
         if (listLength == 0) {
-            personalList = [];
-            localStorage.setItem('personalList', JSON.stringify(personalList));
+            designList = [];
+            localStorage.setItem('designList', JSON.stringify(designList));
         }
         msgText = "Todo has been deleted";
         popupNotification(1, msgText)
-        localStorage.setItem('personalList', JSON.stringify(personalList));
+        localStorage.setItem('designList', JSON.stringify(designList));
     }
 }
 
@@ -271,3 +271,11 @@ function popupNotification(msg, msgText) {
         }, 1300);
     }
 }
+
+function openForm() {
+    document.getElementById("popup").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("popup").style.display = "none";
+  }

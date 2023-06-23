@@ -1,18 +1,3 @@
-class AdComponent extends HTMLElement {
-    connectedCallback() {
-      const isMobile = matchMedia('(max-width: 767px)').matches;    
-      const ad = document.currentScript.closest('.ad');
-      const content = this
-        .querySelector(isMobile ? '.ad_mobile' : '.ad_desktop')
-        .content;
-      
-      this.appendChild(document.importNode(content, true));
-    }
-  }
-  
-  customElements.define('cool-ad', AdComponent);
-
-
 //Select form
 var form = document.getElementById("form");
 //getting input form inputfield
@@ -31,7 +16,6 @@ let EditList = -1;
 let msgText;
 //Calling function to getvalue in localstorage
 addingTodo();
-//
 listCompleted();
 //submit
 form.addEventListener('submit', function (event) {
@@ -98,6 +82,7 @@ function add() {
             popupNotification(1, msgText);
         }
     }
+   
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
@@ -112,7 +97,6 @@ function addingTodo(id) {
     // Adding values to list
     List.forEach((todo, index) => {
         if (todo.checked == true) {
-            console.log(todo.index);
             CompletedList.push(todo);
             List = List.filter((h, index) => id != index);
             localStorage.setItem('List', JSON.stringify(List));
@@ -206,18 +190,6 @@ forward.addEventListener('click', (event) => {
     action == 'delete' && deleteList(wl);
 });
 
-forward.addEventListener('click', (event) => {
-    var target = event.target;
-    var click = target.parentNode;
-    if (click.className != 'button') return;
-    // if(click.className != 'listview') return;
-    // Getting id to Edit or Delete the value in list
-    var wl = click.id;
-    // Getting action form the list button 
-    var action = target.dataset.action;
-    //Calling function to Edit nor delete
-});
-
 
 forward2.addEventListener('click', (event) => {
     var target = event.target;
@@ -254,8 +226,8 @@ function checkList(wl) {
 
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
-    console.log(List[wl]);
-    document.getElementById('btn').innerHTML = "save";
+    
+    document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
     input.value = List[wl].value;
     EditList = wl;
 }

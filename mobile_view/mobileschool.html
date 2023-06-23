@@ -10,22 +10,24 @@
 <body class="backgroundbody">
     <div>
         <div class="heading">
-            <button onclick="window.location.href='../index.html'" type="submit" id="btn">&lt;</button><span>Home</span>           
+            <button onclick="window.location.href='../index.html'" type="submit" id="homeBtn">&lt;</button><span>School</span>           
         </div>
-        <div class="outerinput">
-            <div>
-                <form id="form">
-                    <input
-                        type="text"
-                        id="input"
-                        placeholder="Add new Todo..."
-                        class="inputfield"
-                        autocomplete="off"
-                    >
-                    <button type="submit" id="btn">+</button>
-                    <span id="toast"></span>
-                </form>
+        <div class="form-popup" id="popup">
+        <div id="form">
+            <form class="form-container">
+              <h1>Add todo</h1>
+              <input  type="text"
+              id="input"
+              placeholder="Add new Todo..."
+              class="inputfield"
+              autocomplete="off"
+              >  
+              <div class="popupButton">        
+              <button type="submit" id="btn">+</button>
+              <button type="button" id="btn" onclick="closeForm()"><i class="bi bi-x"></i></button>
             </div>
+            </form>
+          </div>
         </div>
         <div class="outerinput2">
             <h3>Todo's List</h3>
@@ -43,13 +45,12 @@
                         <div id="completedList" class="view"></div>
                     </div>
                 </div>
-            </div>
-            
+            </div>            
         </div>
         <div class="addbutton">
-            <button>+</button>
+            <button onclick="openForm()">+</button>
         </div>
     </div>
-    <script src="../js/script.js"></script>
+    <script src="../mobile_js/mobileSchool.js"></script>
 </body>
 </html>

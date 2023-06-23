@@ -4,7 +4,7 @@ var form = document.getElementById("form");
 var input = document.getElementById("input");
 //getting id to listing value in html
 var forward = document.getElementById("list");
-var forward2  =document.getElementById("completedList")
+var forward2 = document.getElementById("completedList")
 //Getting the data form localstorage
 let designList = JSON.parse(localStorage.getItem('designList')) || [];
 let listLength = designList.length;
@@ -28,12 +28,12 @@ form.addEventListener('submit', function (event) {
     listCompleted();
     //Adding the data into local storage
     localStorage.setItem('designList', JSON.stringify(designList));
-    localStorage.setItem('designCompletedList',JSON.stringify(designCompletedList));
+    localStorage.setItem('designCompletedList', JSON.stringify(designCompletedList));
 });
 
 //-----------------         Function to add a value               ------------------
 function add() {
-    let inputValue = input.value;
+    let inputValue = input.value.trim();
     //checking duplicate value
     var isDuplicate = designList.some((store) => store.value.toUpperCase() == inputValue.toUpperCase());
     //Checking the input is empty or not empty
@@ -82,40 +82,45 @@ function add() {
             popupNotification(1, msgText);
         }
     }
+    
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
 function addingTodo(id) {
     if (designList.length == 0) {
-        forward.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
+        forward.innerHTML = '<center class ="valueMessage">Your Todo List has been empty</center>';
         document.getElementById('taskValue').innerHTML = "Tasks - " + listLength;
         return;
     }
     // Clear the list before enter the value
     forward.innerHTML = '';
-    // Adding values to list based on task completion
+    // Adding values to list
     designList.forEach((todo, index) => {
-        if(todo.checked == true){
-            console.log(todo.index);
+        if (todo.checked == true) {
             designCompletedList.push(todo);
             designList = designList.filter((h, index) => id != index);
             localStorage.setItem('designList', JSON.stringify(designList));
             localStorage.setItem('designCompletedList', JSON.stringify(designCompletedList));
-            listLength-=1
-            completedListLength+=1
+            listLength -= 1
+            completedListLength += 1
             document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
-            console.log('List length'+listLength);
-            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;            
+            console.log('List length' + listLength);
+            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
+            if (designList.length == 0) {
+                forward.innerHTML = '<center class ="valueMessage">Your Todo List has been empty</center>';
+                document.getElementById('taskValue').innerHTML = "Tasks - " + listLength;
+                return;
+            }
         }
         forward.innerHTML += `
         <div class="listview" id=${index}>
         <i 
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
-        data-action="check"
+        data-action="check"        
         ></i> 
         <p class="value" data-action="check">${todo.value}</p>
-        <button class="btnedit bi bi-pencil-square" data-action="edit"></button>
-        <button class="btndelete bi bi-trash" data-action="delete"></button>          
+        <button id="editbutton" class="btnedit bi bi-pencil-square" data-action="edit"></button>
+        <button id="deletebutton" class="btndelete bi bi-trash" data-action="delete"></button>   
         </div>`;
     }
     );
@@ -123,11 +128,12 @@ function addingTodo(id) {
     if (listLength > 0) {
         document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
     }
+    // listCompleted();
 }
 
-function listCompleted(){
+function listCompleted(id) {
     if (designCompletedList.length == 0) {
-        forward2.innerHTML = '<center style="font-size:x-large;">There is no Completed task</center>';
+        forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
         document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
         return;
     }
@@ -135,11 +141,27 @@ function listCompleted(){
     forward2.innerHTML = '';
     // Adding values to list
     designCompletedList.forEach((todo, index) => {
+        if (todo.checked == false) {
+            designList.push(todo);
+            designCompletedList = designCompletedList.filter((h, index) => id != index);
+            localStorage.setItem('designList', JSON.stringify(designList));
+            localStorage.setItem('designCompletedList', JSON.stringify(designCompletedList));
+            listLength += 1
+            completedListLength -= 1
+            document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
+            console.log('List length' + listLength);
+            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
+            if (designCompletedList.length == 0) {
+                forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
+                document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
+                return;
+            }
+        }
         forward2.innerHTML += `
         <div class="listview" id=${index}>
         <i 
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
-        data-action="check"
+        data-action="checkCompleted"
         ></i> 
         <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
         </div>`;
@@ -157,6 +179,7 @@ forward.addEventListener('click', (event) => {
     var target = event.target;
     var click = target.parentNode;
     if (click.className != 'listview') return;
+    // if(click.className != 'listview') return;
     // Getting id to Edit or Delete the value in list
     var wl = click.id;
     // Getting action form the list button 
@@ -167,7 +190,31 @@ forward.addEventListener('click', (event) => {
     action == 'delete' && deleteList(wl);
 });
 
-// -------------------------------      Completed Function              ------------------------------------------
+
+forward2.addEventListener('click', (event) => {
+    var target = event.target;
+    var click = target.parentNode;
+    if (click.className != 'listview') return;
+    // Getting id to Edit or Delete the value in list
+    var wl = click.id;
+    // Getting action form the list button 
+    var action = target.dataset.action;
+    //Calling function to Edit nor delete
+    action == 'checkCompleted' && completedMove(wl);
+});
+
+function completedMove(wl) {
+    designCompletedList = designCompletedList.map((todo, index) => ({
+        ...todo,
+        checked: index == wl ? !todo.checked : todo.checked,
+    }));
+    addingTodo();
+    listCompleted(wl);
+    listCompleted();
+}
+
+// -------------------------------      Completed Function                                 ------------------------------------------
+
 function checkList(wl) {
     designList = designList.map((todo, index) => ({
         ...todo,
@@ -175,11 +222,12 @@ function checkList(wl) {
     }));
     addingTodo(wl);
     listCompleted();
-} 
+}
 
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
-    document.getElementById('btn').innerHTML = "save";
+    
+    document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
     input.value = designList[wl].value;
     EditList = wl;
 }
@@ -194,7 +242,8 @@ function deleteList(wl) {
         listLength -= 1;
         addingTodo();
         if (listLength == 0) {
-            document.getElementById('listValue').innerHTML = " ";
+            designList = [];
+            localStorage.setItem('designList', JSON.stringify(designList));
         }
         msgText = "Todo has been deleted";
         popupNotification(1, msgText)
@@ -220,15 +269,5 @@ function popupNotification(msg, msgText) {
         setTimeout(() => {
             toast.remove();
         }, 1300);
-    }
-}
-
-//-------------------------          Menu Button  -----------------------------------
-function menuButton(){
-    var x = document.getElementById("sidebar");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
     }
 }

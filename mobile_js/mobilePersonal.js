@@ -82,7 +82,7 @@ function add() {
             popupNotification(1, msgText);
         }
     }
-    
+    document.getElementById("popup").style.display = "none";
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
@@ -226,7 +226,7 @@ function checkList(wl) {
 
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
-    
+    document.getElementById("popup").style.display = "block";
     document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
     input.value = personalList[wl].value;
     EditList = wl;
@@ -271,3 +271,11 @@ function popupNotification(msg, msgText) {
         }, 1300);
     }
 }
+
+function openForm() {
+    document.getElementById("popup").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("popup").style.display = "none";
+  }
