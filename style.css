@@ -1,8 +1,21 @@
-html,
-body {
-    margin: 0;
-    height: 100%;
-    overflow: hidden
+
+
+.mobileview {
+    display: none
+}
+
+.webview {
+    display: block
+}
+
+@media (max-width:700px) {
+    .webview {
+        display: none
+    }
+
+    .mobileview {
+        display: block
+    }
 }
 
 * {
@@ -12,9 +25,7 @@ body {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-body {
-    background-color: #17181F;
-}
+
 
 .wrapper {
     display: flex;
@@ -22,12 +33,7 @@ body {
 }
 
 
-.sideBarheading {
-    font-size: larger;
-    text-align: center;
-    margin: 15px;
-    color: red;
-}
+
 
 .sidebar ul li {
     padding: 5%;
@@ -146,9 +152,42 @@ body {
     margin-left: 15px;
 }
 
+.mobilehead{
+    justify-content: center;
+}
+
+.mobilesidebar{
+    /* display: flex; */
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.mobilesidebar ul li {
+    padding: 5%;
+}
+
+.mobilesidebar ul li a {
+    color: #bdb8d7;
+    /* display: block; */
+}
+
+.mobilesidebar ul li:hover {
+    background-color: #594f8d;
+}
 
 
-@media (max-width: 1400px) {
+@media (max-width: 2000px) {
+    .sideBarheading {
+        font-size: larger;
+        text-align: center;
+        margin: 15px;
+        color: red;
+    }
+    body {
+        background-color: #17181F;
+    }
+
     .backgroundbody {
         margin-left: 30%;
     }
@@ -191,12 +230,12 @@ body {
         font-size: larger;
     }
 
-    #deletebutton{
+    #deletebutton {
         position: absolute;
         left: 85%;
     }
-    
-    #editbutton{
+
+    #editbutton {
         position: absolute;
         left: 75%;
     }
@@ -238,23 +277,141 @@ body {
         color: #fff;
         width: 65%;
     }
-    .value{
+
+    .value {
         margin-left: 2%;
     }
 }
 
-@media (max-width: 767px) {
-    .sidebar {
-        display: none;
+/* @media (max-width: 1800px) {
+    .sideBarheading {
+        font-size: larger;
+        text-align: center;
+        margin: 15px;
+        color: red;
+    }
+    body {
+        background-color: #17181F;
     }
 
-    
-    #deletebutton{
+    .backgroundbody {
+        margin-left: 30%;
+    }
+
+    .scroll {
+        width: 90%;
+        height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .toast {
+        position: absolute;
+        left: 35%;
+        top: 22%;
+        font-size: larger;
+        color: rgb(234, 87, 87);
+        font-weight: bolder;
+        border-radius: 5px;
+    }
+
+    .toast2 {
+        position: absolute;
+        left: 35%;
+        top: 22%;
+        font-size: larger;
+        color: rgb(0, 231, 46);
+        font-weight: bolder;
+        border-radius: 5px;
+    }
+
+    .head {
+        color: white;
+        margin-left: 25%;
+        margin-bottom: 4%;
+        font-size: x-large;
+    }
+
+    .valueMessage {
+        font-size: larger;
+    }
+
+    #deletebutton {
+        position: absolute;
+        left: 85%;
+    }
+
+    #editbutton {
+        position: absolute;
+        left: 75%;
+    }
+
+    .btnedit {
+        cursor: pointer;
+        background-color: #EF7098;
+        width: 40px;
+        height: 25px;
+    }
+
+    .btndelete {
+        cursor: pointer;
+        background-color: #EF7098;
+        width: 40px;
+        height: 25px;
+    }
+
+    .listview {
+        display: flex;
+        position: relative;
+        border: 8px solid #17181F;
+        background-color: #68686b;
+        padding: 2.5%;
+        border-radius: 25px;
+    }
+
+    .sidebar {
+        width: 200px;
+        height: 100%;
+        background: #20212B;
+        padding: 30px 0px;
+        position: fixed;
+    }
+
+    .outerinput2 {
+        margin-top: 6%;
+        border-radius: 2%;
+        color: #fff;
+        width: 65%;
+    }
+
+    .value {
+        margin-left: 2%;
+    }
+} */
+
+@media (max-width: 760) {
+    .sideBarheading {
+        font-size: larger;
+        text-align: center;
+        margin: 15px;
+        color: yellow;
+    }
+
+    body{
+        background-color: #0089E2;
+    }
+
+    .collectionmobile{
+        display: flex;
+        justify-content: center;
+    }
+
+    #deletebutton {
         position: absolute;
         left: 82%;
     }
-    
-    #editbutton{
+
+    #editbutton {
         position: absolute;
         left: 65%;
     }
@@ -282,7 +439,7 @@ body {
         overflow-x: hidden;
     }
 
-    .outerinput2 h3{
+    .outerinput2 h3 {
         margin-left: 40%;
         font-size: 20px;
     }
@@ -375,7 +532,8 @@ body {
         width: 40px;
         height: 25px;
     }
-    .view{
+
+    .view {
         padding-left: 10%;
     }
 }

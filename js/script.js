@@ -1,3 +1,18 @@
+class AdComponent extends HTMLElement {
+    connectedCallback() {
+      const isMobile = matchMedia('(max-width: 767px)').matches;    
+      const ad = document.currentScript.closest('.ad');
+      const content = this
+        .querySelector(isMobile ? '.ad_mobile' : '.ad_desktop')
+        .content;
+      
+      this.appendChild(document.importNode(content, true));
+    }
+  }
+  
+  customElements.define('cool-ad', AdComponent);
+
+
 //Select form
 var form = document.getElementById("form");
 //getting input form inputfield
