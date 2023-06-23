@@ -1,3 +1,4 @@
+
 //Select form
 var form = document.getElementById("form");
 //getting input form inputfield
@@ -82,7 +83,6 @@ function add() {
             popupNotification(1, msgText);
         }
     }
-   
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
@@ -226,7 +226,7 @@ function checkList(wl) {
 
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
-    
+
     document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
     input.value = List[wl].value;
     EditList = wl;
@@ -271,3 +271,6 @@ function popupNotification(msg, msgText) {
         }, 1300);
     }
 }
+
+document.getElementById('tasklist1').innerHTML = 'Task In Process - '+listLength
+document.getElementById('compList1').innerHTML = 'Task Completed - '+completedListLength

@@ -151,31 +151,54 @@ body {
 }
 
 .mobilesidebar {
-    margin-top: 25%;
+    margin-top: 10%;
     justify-content: center;
     text-align: center;
     width: 100%;
     height: 100%;
 }
 
+.taskValueShow {
+    background-color: #68686b;
+    width: 70%;
+    margin-left: 15%;
+    height: 450px;
+}
+
+.taskValueShow div p {
+    color: #ffffff;
+    margin-left: 14%;
+    padding: 1%;
+    font-size: x-large;
+}
+
+.taskValueShow div h3 {
+    padding: 3%;
+    font-size: 25px;
+    margin-left: 2%;
+}
+
 .mobilesidebar ul li {
     padding: 5%;
 }
 
+.mobileview {
+    height: 100%;
+}
+
 .mobilesidebar ul li a {
-    font-size: larger;
+    font-size: x-large;
     color: #bdb8d7;
-    display: block;
 }
 
 .mobileheading {
-    font-size: 30px;
+    font-size: 35px;
     color: red;
 }
 
 .mobilesidebar ul {
     margin-top: 3%;
-    left: 25%;
+    left: 2%;
 }
 
 @media (max-width: 2000px) {
@@ -183,7 +206,7 @@ body {
         font-size: larger;
         text-align: center;
         margin: 15px;
-        color: red;
+        color: r5ed;
     }
 
     body {

@@ -7,13 +7,13 @@ var forward = document.getElementById("list");
 var forward2 = document.getElementById("completedList")
 //Getting the data form localstorage
 let designList = JSON.parse(localStorage.getItem('designList')) || [];
-let listLength = designList.length;
+let listLength3 = designList.length;
 let designCompletedList = JSON.parse(localStorage.getItem('designCompletedList')) || [];
-let completedListLength = designCompletedList.length;
+let completedListLength3 = designCompletedList.length;
 //array to store
-let EditList = -1;
+let editlisttochange = -1;
 // Passing empty value for toast message
-let msgText;
+let msgText3;
 //Calling function to getvalue in localstorage
 addingTodo();
 listCompleted();
@@ -38,36 +38,36 @@ function add() {
     var isDuplicate = designList.some((store) => store.value.toUpperCase() == inputValue.toUpperCase());
     //Checking the input is empty or not empty
     if (inputValue.length == 0) {
-        msgText = "Your entered empty text!!!!!!!!";
-        popupNotification(0, msgText);
+        msgText3 = "Your entered empty text!!!!!!!!";
+        popupNotification(0, msgText3);
     }
     //Checking the duplicate value before storig list
     else if (isDuplicate) {
-        if (EditList >= 0) {
+        if (editlisttochange >= 0) {
             input.value = '';
             document.getElementById('btn').innerHTML = "+";
-            msgText = "There is no changes in your todo";
-            popupNotification(1, msgText);
+            msgText3 = "There is no changes in your todo";
+            popupNotification(1, msgText3);
         }
         else {
-            msgText = "This value already entered in list";
-            popupNotification(0, msgText);
+            msgText3 = "This value already entered in list";
+            popupNotification(0, msgText3);
         }
     }
     //Adding and editing
     else {
-        if (EditList >= 0) {
+        if (editlisttochange >= 0) {
             designList = designList.map((q, index) => ({
                 ...q,
-                value: index == EditList ? inputValue : q.value,
+                value: index == editlisttochange ? inputValue : q.value,
             }))
-            EditList = -1;
+            editlisttochange = -1;
             // Changing the button "+" after saving the value
             document.getElementById('btn').innerHTML = "+";
             // Clearing the inputfield after edting the value
             input.value = '';
-            msgText = "Changes has been saved in list";
-            popupNotification(1, msgText);
+            msgText3 = "Changes has been saved in list";
+            popupNotification(1, msgText3);
         }
         else {
             // To store the value
@@ -77,9 +77,9 @@ function add() {
             });
             // Clearing the Inputfield after entering the value
             input.value = '';
-            listLength += 1;
-            msgText = "Your new todo has been added";
-            popupNotification(1, msgText);
+            listLength3 += 1;
+            msgText3 = "Your new todo has been added";
+            popupNotification(1, msgText3);
         }
     }
     
@@ -89,7 +89,7 @@ function add() {
 function addingTodo(id) {
     if (designList.length == 0) {
         forward.innerHTML = '<center class ="valueMessage">Your Todo List has been empty</center>';
-        document.getElementById('taskValue').innerHTML = "Tasks - " + listLength;
+        document.getElementById('taskValue').innerHTML = "Tasks - " + listLength3;
         return;
     }
     // Clear the list before enter the value
@@ -101,14 +101,14 @@ function addingTodo(id) {
             designList = designList.filter((h, index) => id != index);
             localStorage.setItem('designList', JSON.stringify(designList));
             localStorage.setItem('designCompletedList', JSON.stringify(designCompletedList));
-            listLength -= 1
-            completedListLength += 1
-            document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
-            console.log('List length' + listLength);
-            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
+            listLength3 -= 1
+            completedListLength3 += 1
+            document.getElementById('taskValue').innerHTML = "Task -  " + listLength3;
+            console.log('List length' + listLength3);
+            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength3;
             if (designList.length == 0) {
                 forward.innerHTML = '<center class ="valueMessage">Your Todo List has been empty</center>';
-                document.getElementById('taskValue').innerHTML = "Tasks - " + listLength;
+                document.getElementById('taskValue').innerHTML = "Tasks - " + listLength3;
                 return;
             }
         }
@@ -125,8 +125,8 @@ function addingTodo(id) {
     }
     );
     // Showing length in list
-    if (listLength > 0) {
-        document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
+    if (listLength3 > 0) {
+        document.getElementById('taskValue').innerHTML = "Task -  " + listLength3;
     }
     // listCompleted();
 }
@@ -134,7 +134,7 @@ function addingTodo(id) {
 function listCompleted(id) {
     if (designCompletedList.length == 0) {
         forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
-        document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
+        document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength3;
         return;
     }
     // Clear the list before enter the value
@@ -146,14 +146,14 @@ function listCompleted(id) {
             designCompletedList = designCompletedList.filter((h, index) => id != index);
             localStorage.setItem('designList', JSON.stringify(designList));
             localStorage.setItem('designCompletedList', JSON.stringify(designCompletedList));
-            listLength += 1
-            completedListLength -= 1
-            document.getElementById('taskValue').innerHTML = "Task -  " + listLength;
-            console.log('List length' + listLength);
-            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
+            listLength3 += 1
+            completedListLength3 -= 1
+            document.getElementById('taskValue').innerHTML = "Task -  " + listLength3;
+            console.log('List length' + listLength3);
+            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength3;
             if (designCompletedList.length == 0) {
                 forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
-                document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength;
+                document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength3;
                 return;
             }
         }
@@ -168,8 +168,8 @@ function listCompleted(id) {
     }
     );
     // Showing length in list
-    if (completedListLength > 0) {
-        document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength;
+    if (completedListLength3 > 0) {
+        document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength3;
     }
     addingTodo();
 }
@@ -186,7 +186,7 @@ forward.addEventListener('click', (event) => {
     var action = target.dataset.action;
     //Calling function to Edit nor delete
     action == 'check' && checkList(wl);
-    action == 'edit' && editList(wl);
+    action == 'edit' && editlist3(wl);
     action == 'delete' && deleteList(wl);
 });
 
@@ -224,12 +224,12 @@ function checkList(wl) {
     listCompleted();
 }
 
-// ------------------------------            Editlist function          --------------------------------------------
-function editList(wl) {
+// ------------------------------            editlisttochange function          --------------------------------------------
+function editlist3(wl) {
     
     document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
     input.value = designList[wl].value;
-    EditList = wl;
+    editlisttochange = wl;
 }
 
 //------------------------           Deleting Function while delete a value in list          --------------------------
@@ -239,24 +239,24 @@ function deleteList(wl) {
     if (con) {
         designList = designList.filter((h, index) => wl != index);
         //Calling Function changes in list
-        listLength -= 1;
+        listLength3 -= 1;
         addingTodo();
-        if (listLength == 0) {
+        if (listLength3 == 0) {
             designList = [];
             localStorage.setItem('designList', JSON.stringify(designList));
         }
-        msgText = "Todo has been deleted";
-        popupNotification(1, msgText)
+        msgText3 = "Todo has been deleted";
+        popupNotification(1, msgText3)
         localStorage.setItem('designList', JSON.stringify(designList));
     }
 }
 
 //----------------------     Popup message ----------------------------
-function popupNotification(msg, msgText) {
+function popupNotification(msg, msgText3) {
     const toast = document.createElement('div')
     if (msg == 0) {
         toast.classList.add('toast');
-        toast.textContent = msgText;
+        toast.textContent = msgText3;
         document.body.appendChild(toast);
         setTimeout(() => {
             toast.remove();
@@ -264,10 +264,13 @@ function popupNotification(msg, msgText) {
     }
     else {
         toast.classList.add('toast2');
-        toast.textContent = msgText;
+        toast.textContent = msgText3;
         document.body.appendChild(toast);
         setTimeout(() => {
             toast.remove();
         }, 1300);
     }
 }
+
+document.getElementById('tasklist4').innerHTML = 'Task In Process - '+listLength3
+document.getElementById('compList4').innerHTML = 'Task Completed - '+completedListLength3
