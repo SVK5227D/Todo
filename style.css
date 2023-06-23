@@ -61,11 +61,9 @@
 
 
 .backgroundbody {
-    /*To stop the repection for background linergradient*/
     height: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /* Algin the view in center*/
     justify-content: center;
     padding-top: 2%;
 }
@@ -84,8 +82,6 @@
     border-radius: 5px;
     width: 65%;
 }
-
-
 
 #btn {
     cursor: pointer;
@@ -112,13 +108,6 @@
     background-color: #0089E2;
     border: 2px solid black;
 }
-
-/* .icon {
-    position: fixed;
-    margin-top: 3%;
-    margin-left: 2%;
-    color: #ffffff;
-} */
 
 .view {
     padding-left: 15%;
@@ -157,10 +146,11 @@
 }
 
 .mobilesidebar{
-    /* display: flex; */
+    margin-top: 25%;
     justify-content: center;
     text-align: center;
     width: 100%;
+    height: 100%;
 }
 
 .mobilesidebar ul li {
@@ -168,14 +158,20 @@
 }
 
 .mobilesidebar ul li a {
+    font-size: larger;
     color: #bdb8d7;
-    /* display: block; */
+    display: block;
 }
 
-.mobilesidebar ul li:hover {
-    background-color: #594f8d;
+.mobileheading{
+    font-size: 30px;
+    color: red;
 }
 
+.mobilesidebar ul{
+    margin-top: 3%;
+    left: 25%;
+}
 
 @media (max-width: 2000px) {
     .sideBarheading {
@@ -283,7 +279,7 @@
     }
 }
 
-/* @media (max-width: 1800px) {
+@media (max-width: 1800px) {
     .sideBarheading {
         font-size: larger;
         text-align: center;
@@ -387,7 +383,7 @@
     .value {
         margin-left: 2%;
     }
-} */
+}
 
 @media (max-width: 760) {
     .sideBarheading {
@@ -458,11 +454,6 @@
     .sidebarIcon {
         margin-left: 15px;
     }
-
-    /* .icon {
-        margin-top: 5%;
-        margin-left: 5%;
-    } */
 
     .inputfield {
         height: 35px;
@@ -536,4 +527,100 @@
     .view {
         padding-left: 10%;
     }
+}
+
+/* MObile style */
+.mobileview .backgroundbody{
+    background-color: #0E0E13;
+}
+
+.mobileview .heading{
+    margin-top: 12%;
+   margin-left: 10%;
+}
+
+.mobileview  .heading a{
+    background-color: transparent;
+    color: #fff;
+}
+
+.mobileview .heading span{
+    padding-left: 2.5%;
+    font-size:25px ;
+    color: #ffffff;
+}
+.mobileview #btn{
+    background-color: #20212B;
+    color: white;
+    border-radius: 25PX;
+    font-size: larger;
+    width: 45px;
+    height: 35px;
+}
+
+.mobileview .outerinput2 {
+    margin-top: 10%;
+    color: #fff;
+    width: 50%;
+    margin-left: 10%;
+}
+
+.mobileview .outerinput2 h3 {
+    margin-left: 40%;
+    font-size: 20px;
+}
+
+.mobileview .listview {
+    display: flex;
+    position: relative;
+    border: 8px solid #17181F;
+    background-color: #68686b;
+    height: 20px;
+    padding: 2.5%;
+    border-radius: 25px;
+}
+
+.mobileview .btnedit {
+    background-color: #EF7098;
+    right: 25%;
+    width: 40px;
+    height: 25px;
+}
+.mobileview .btndelete {
+    right: 15%;
+    background-color: #EF7098;
+    width: 40px;
+    height: 25px;
+}
+
+.mobileview .scroll {
+    width: 150%;
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.mobileview #deletebutton {
+    position: absolute;
+    left: 82%;
+}
+
+.mobileview #editbutton {
+    position: absolute;
+    left: 65%;
+}
+
+.mobileview .checked {
+    text-decoration: line-through;
+}
+
+.mobileview .check {
+    justify-content: left;
+    color: yellow;
+}
+
+.mobileview .value {
+    margin: 0.10%;
+    margin-left: 2.54%;
+    /* margin-bottom: 5%; */
 }

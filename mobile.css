@@ -1,0 +1,120 @@
+.backgroundbody{
+    background-color: #0E0E13;
+}
+
+.heading{
+    margin-top: 12%;
+   margin-left: 10%;
+}
+
+.heading a{
+    background-color: transparent;
+    color: #fff;
+}
+
+.heading span{
+    padding-left: 2.5%;
+    font-size:25px ;
+    color: #ffffff;
+}
+#btn{
+    background-color: #20212B;
+    color: white;
+    border-radius: 25PX;
+    font-size: larger;
+    width: 45px;
+    height: 35px;
+}
+
+.outerinput2 {
+    margin-top: 10%;
+    color: #fff;
+    width: 50%;
+    margin-left: 10%;
+}
+
+.outerinput2 h3 {
+    margin-left: 40%;
+    font-size: 20px;
+}
+
+.listview {
+    display: flex;
+    position: relative;
+    border: 8px solid #17181F;
+    background-color: #68686b;
+    height: 20px;
+    padding: 2.5%;
+    border-radius: 25px;
+}
+
+.btnedit {
+    background-color: #EF7098;
+    right: 25%;
+    width: 40px;
+    height: 25px;
+}
+.btndelete {
+    right: 15%;
+    background-color: #EF7098;
+    width: 40px;
+    height: 25px;
+}
+
+.scroll {
+    width: 150%;
+    height: fit-content;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#deletebutton {
+    position: absolute;
+    left: 82%;
+}
+
+#editbutton {
+    position: absolute;
+    left: 65%;
+}
+
+.checked {
+    text-decoration: line-through;
+}
+
+.check {
+    justify-content: left;
+    color: #ffff00;
+}
+
+.value {
+    margin: 0.10%;
+    margin-left: 2.54%;
+    /* margin-bottom: 5%; */
+}
+.addbutton{
+    margin-top: 1%;
+   text-align: center;
+}
+
+.addbutton button{
+    text-align: center;
+    width: 15%;
+    height: 10%;
+    border-radius: 25px;
+    font-size: 25px;
+    color: white;
+    background-image: linear-gradient(to left bottom,
+    #ffff00,
+    #EF7098,
+    #EF7098,
+    #EF7098);
+}
+
+/* @media (max-width:1800px) {
+    .backgroundbody{
+        display: none;
+    }
+
+} */
