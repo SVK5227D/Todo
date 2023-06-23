@@ -1,3 +1,10 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}
+
 .mobileview {
     display: none
 }
@@ -550,26 +557,34 @@
     .view {
         padding-left: 10%;
     }
-
     .taskValueShow {
         background-color: #68686b;
         width: 70%;
         margin-left: 15%;
         height: 450px;
     }
-
+    
     .taskValueShow div p {
         color: #ffffff;
         margin-left: 14%;
         padding: 1%;
         font-size: x-large;
     }
-
+    
     .taskValueShow div h3 {
         padding: 3%;
         font-size: 25px;
         margin-left: 2%;
     }
+    
+}
+
+.scrolltask{
+    width: 70%;
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* MObile style */
