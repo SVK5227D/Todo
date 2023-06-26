@@ -11,7 +11,7 @@ let listLength = schoolList.length;
 let schoolCompletedList = JSON.parse(localStorage.getItem('schoolCompletedList')) || [];
 let completedListLength = schoolCompletedList.length;
 //array to store
-let EditList = -1;
+let editlist4 = -1;
 // Passing empty value for toast message
 let msgText;
 //Calling function to getvalue in localstorage
@@ -43,7 +43,7 @@ function add() {
     }
     //Checking the duplicate value before storig list
     else if (isDuplicate) {
-        if (EditList >= 0) {
+        if (editlist4 >= 0) {
             input.value = '';
             document.getElementById('btn').innerHTML = "+";
             msgText = "There is no changes in your todo";
@@ -56,12 +56,12 @@ function add() {
     }
     //Adding and editing
     else {
-        if (EditList >= 0) {
+        if (editlist4 >= 0) {
             schoolList = schoolList.map((q, index) => ({
                 ...q,
-                value: index == EditList ? inputValue : q.value,
+                value: index == editlist4 ? inputValue : q.value,
             }))
-            EditList = -1;
+            editlist4 = -1;
             // Changing the button "+" after saving the value
             document.getElementById('btn').innerHTML = "+";
             // Clearing the inputfield after edting the value
@@ -163,7 +163,7 @@ function listCompleted(id) {
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
         data-action="checkCompleted"
         ></i> 
-        <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
+        <p class="${todo.checked ? 'checked' : ' '} compvalue" data-action="check">${todo.value}</p>
         </div>`;
     }
     );
@@ -186,7 +186,7 @@ forward.addEventListener('click', (event) => {
     var action = target.dataset.action;
     //Calling function to Edit nor delete
     action == 'check' && checkList(wl);
-    action == 'edit' && editList(wl);
+    action == 'edit' && Editlist4(wl);
     action == 'delete' && deleteList(wl);
 });
 
@@ -211,9 +211,11 @@ function completedMove(wl) {
     addingTodo();
     listCompleted(wl);
     listCompleted();
+    msgText3 = "Your todo has been moved to task inprocess";
+    popupNotification(1, msgText3);
 }
 
-// -------------------------------      Completed Function                                 ------------------------------------------
+// -------------------------------      Completed Function               ------------------------------------------
 
 function checkList(wl) {
     schoolList = schoolList.map((todo, index) => ({
@@ -222,14 +224,16 @@ function checkList(wl) {
     }));
     addingTodo(wl);
     listCompleted();
+    msgText3 = "Your todo has been completed";
+    popupNotification(1, msgText3);
 }
 
-// ------------------------------            Editlist function          --------------------------------------------
-function editList(wl) {
+// ------------------------------            editlist4 function          --------------------------------------------
+function Editlist4(wl) {
     document.getElementById("popup").style.display = "block";
     document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
     input.value = schoolList[wl].value;
-    EditList = wl;
+    editlist4 = wl;
 }
 
 //------------------------           Deleting Function while delete a value in list          --------------------------

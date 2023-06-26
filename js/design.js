@@ -24,7 +24,6 @@ form.addEventListener('submit', function (event) {
     add();
     //Calling function to viewing list in html
     addingTodo();
-    //
     listCompleted();
     //Adding the data into local storage
     localStorage.setItem('designList', JSON.stringify(designList));
@@ -128,7 +127,6 @@ function addingTodo(id) {
     if (listLength3 > 0) {
         document.getElementById('taskValue').innerHTML = "Task -  " + listLength3;
     }
-    // listCompleted();
 }
 
 function listCompleted(id) {
@@ -163,7 +161,7 @@ function listCompleted(id) {
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
         data-action="checkCompleted"
         ></i> 
-        <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
+        <p class="${todo.checked ? 'checked' : ' '} compvalue" data-action="check">${todo.value}</p>
         </div>`;
     }
     );
@@ -211,10 +209,11 @@ function completedMove(wl) {
     addingTodo();
     listCompleted(wl);
     listCompleted();
+    msgText3 = "Your todo has been moved to task inprocess";
+    popupNotification(1, msgText3);
 }
 
-// -------------------------------      Completed Function                                 ------------------------------------------
-
+// -------------------------------      Completed Function          ------------------------------------------
 function checkList(wl) {
     designList = designList.map((todo, index) => ({
         ...todo,
@@ -222,11 +221,12 @@ function checkList(wl) {
     }));
     addingTodo(wl);
     listCompleted();
+    msgText3 = "Your todo has been completed";
+    popupNotification(1, msgText3);
 }
 
 // ------------------------------            editlisttochange function          --------------------------------------------
-function editlist3(wl) {
-    
+function editlist3(wl) {    
     document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
     input.value = designList[wl].value;
     editlisttochange = wl;
@@ -271,6 +271,3 @@ function popupNotification(msg, msgText3) {
         }, 1300);
     }
 }
-
-document.getElementById('tasklist4').innerHTML = 'Task In Process - '+listLength3
-document.getElementById('compList4').innerHTML = 'Task Completed - '+completedListLength3

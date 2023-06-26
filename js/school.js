@@ -163,7 +163,7 @@ function listCompleted(id) {
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
         data-action="checkCompleted"
         ></i> 
-        <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
+        <p class="${todo.checked ? 'checked' : ' '} compvalue" data-action="check">${todo.value}</p>
         </div>`;
     }
     );
@@ -211,6 +211,8 @@ function completedMove(wl) {
     addingTodo();
     listCompleted(wl);
     listCompleted();
+    msgText3 = "Your todo has been moved to task inprocess";
+    popupNotification(1, msgText3);
 }
 
 // -------------------------------      Completed Function                                 ------------------------------------------
@@ -222,6 +224,8 @@ function checkList(wl) {
     }));
     addingTodo(wl);
     listCompleted();
+    msgText3 = "Your todo has been completed";
+    popupNotification(1, msgText3);
 }
 
 // ------------------------------            editlist4 function          --------------------------------------------
@@ -272,7 +276,5 @@ function popupNotification(msg, msgText4) {
     }
 }
 
-document.getElementById('tasklist2').innerHTML = 'Task In Process - '+listLength4
-document.getElementById('compList2').innerHTML = 'Task Completed - '+completedListLength4
 
 

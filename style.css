@@ -37,8 +37,9 @@ body {
     position: relative;
 }
 
-
-
+.compvalue{
+    margin-left: 2.5%;
+}
 
 .sidebar ul li {
     padding: 5%;
@@ -286,6 +287,7 @@ body {
         background-color: #68686b;
         padding: 2.5%;
         border-radius: 25px;
+        word-break: break-all;
     }
 
     .sidebar {
@@ -305,6 +307,7 @@ body {
 
     .value {
         margin-left: 2%;
+        width: 70%;
     }
 }
 
@@ -364,12 +367,12 @@ body {
 
     #deletebutton {
         position: absolute;
-        left: 85%;
+        left: 80%;
     }
 
     #editbutton {
         position: absolute;
-        left: 75%;
+        left: 65%;
     }
 
     .btnedit {
@@ -412,6 +415,7 @@ body {
 
     .value {
         margin-left: 2%;
+        width: 58%;
     }
 }
 
@@ -444,7 +448,7 @@ body {
 
     .value {
         margin-left: 3.5%;
-        max-width: 45%;
+        width: 70%;
     }
 
     .outerinput2 {
@@ -476,7 +480,6 @@ body {
     }
 
     .outerinput {
-        /* margin-left: %;  */
         border-radius: 5px;
         width: auto;
     }
@@ -557,29 +560,30 @@ body {
     .view {
         padding-left: 10%;
     }
+
     .taskValueShow {
         background-color: #68686b;
         width: 70%;
         margin-left: 15%;
         height: 450px;
     }
-    
+
     .taskValueShow div p {
         color: #ffffff;
         margin-left: 14%;
         padding: 1%;
         font-size: x-large;
     }
-    
+
     .taskValueShow div h3 {
         padding: 3%;
         font-size: 25px;
         margin-left: 2%;
     }
-    
+
 }
 
-.scrolltask{
+.scrolltask {
     width: 70%;
     height: auto;
     max-height: 300px;
@@ -677,10 +681,4 @@ body {
 .mobileview .check {
     justify-content: left;
     color: yellow;
-}
-
-.mobileview .value {
-    margin: 0.10%;
-    margin-left: 2.54%;
-    /* margin-bottom: 5%; */
 }

@@ -53,9 +53,10 @@
     position: relative;
     border: 8px solid #17181F;
     background-color: #68686b;
-    height: 20px;
+    height: auto;
     padding: 2.5%;
     border-radius: 25px;
+    word-break: break-all;
 }
 
 .btnedit {
@@ -63,6 +64,7 @@
     right: 25%;
     width: 40px;
     height: 25px;
+    bottom: 15%;
 }
 
 .btndelete {
@@ -70,6 +72,7 @@
     background-color: #EF7098;
     width: 40px;
     height: 25px;
+    bottom: 15%;
 }
 
 .scroll {
@@ -82,12 +85,12 @@
 
 #deletebutton {
     position: absolute;
-    left: 82%;
+    left: 80%;
 }
 
 #editbutton {
     position: absolute;
-    left: 65%;
+    left: 63%;
 }
 
 .checked {
@@ -99,10 +102,17 @@
     color: #ffff00;
 }
 
-.value {
+.compvalue{
+    display: flex;
     margin: 0.10%;
     margin-left: 2.54%;
-    /* margin-bottom: 5%; */
+}
+
+.value {
+    display: flex;
+    margin: 0.10%;
+    margin-left: 2.54%;
+    width: 55%;
 }
 
 .addbutton {
@@ -127,8 +137,7 @@
 .form-popup {
     width: 60%;
     height: 180px;
-    background-color: #0E0E13;
-    display: none;
+    background-color: #ffffff;
     position: fixed;
     top: 35%;
     right: 25%;
@@ -139,7 +148,7 @@
 
 .form-container h1 {
     text-align: center;
-    color: #fff;
+    color: #0E0E13;
 }
 
 .inputfield {
@@ -147,10 +156,12 @@
     background-color: transparent;
     width: 80%;
     margin-left: 10%;
-    padding-left: 2%;
+    padding-left: 5%;
     font-size: 15px;
     border-radius: 30px;
-    color: #EF7098;
+    color: purple;
+    min-width: 15%;
+    overflow-wrap: break-word;
 }
 
 .popupButton {
@@ -163,7 +174,7 @@
     bottom: 50%;
     width: max-content;
     margin-left: 48%;
-    font-size: x-large;
+    font-size: large;
     transform: translateX(-50%);
     padding: 10px 20px;
     background-color: rgb(234, 87, 87);
@@ -176,8 +187,8 @@
     position: absolute;
     bottom: 50%;
     width: max-content;
-    margin-left: 45%;
-    font-size: x-large;
+    margin-left: 48%;
+    font-size: large;
     transform: translateX(-50%);
     padding: 10px 20px;
     background-color: rgb(0, 231, 46);
@@ -187,7 +198,7 @@
 }
 
 @media (max-with:900px) {
-    .backgroundbody{
+    .backgroundbody {
         display: none;
     }
 }
