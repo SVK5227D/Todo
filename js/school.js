@@ -149,7 +149,6 @@ function listCompleted(id) {
             listLength4 += 1
             completedListLength4 -= 1
             document.getElementById('taskValue').innerHTML = "Task -  " + listLength4;
-            console.log('List length' + listLength);
             document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength4;
             if (schoolCompletedList.length == 0) {
                 forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
@@ -211,11 +210,12 @@ function completedMove(wl) {
     addingTodo();
     listCompleted(wl);
     listCompleted();
-    msgText3 = "Your todo has been moved to task inprocess";
-    popupNotification(1, msgText3);
+    debugger
+    msgText4 = "Your todo has been moved to task inprocess";
+    popupNotification(1, msgText4);
 }
 
-// -------------------------------      Completed Function                                 ------------------------------------------
+// -------------------------------      Completed Function         ------------------------------------------
 
 function checkList(wl) {
     schoolList = schoolList.map((todo, index) => ({
@@ -224,13 +224,12 @@ function checkList(wl) {
     }));
     addingTodo(wl);
     listCompleted();
-    msgText3 = "Your todo has been completed";
-    popupNotification(1, msgText3);
+    msgText4 = "Your todo has been completed";
+    popupNotification(1, msgText4);
 }
 
-// ------------------------------            editlist4 function          --------------------------------------------
+// ------------------------------            editlist4 function     --------------------------------------------
 function editlist44(wl) {
-    
     document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
     input.value = schoolList[wl].value;
     editlist4 = wl;
