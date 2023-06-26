@@ -197,8 +197,9 @@
     border-radius: 5px;
 }
 
-@media (max-with:900px) {
+@media (max-with:1800px) {
     .backgroundbody {
         display: none;
+        visibility: hidden;
     }
 }
