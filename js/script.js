@@ -211,6 +211,8 @@ function completedMove(wl) {
     addingTodo();
     listCompleted(wl);
     listCompleted();
+    msgText3 = "Your todo has been moved to task inprocess";
+    popupNotification(1, msgText3);
 }
 
 // -------------------------------      Completed Function                                 ------------------------------------------
@@ -222,6 +224,8 @@ function checkList(wl) {
     }));
     addingTodo(wl);
     listCompleted();
+    msgText3 = "Your todo has been completed";
+    popupNotification(1, msgText3);
 }
 
 // ------------------------------            Editlist function          --------------------------------------------
@@ -263,6 +267,7 @@ function popupNotification(msg, msgText) {
         }, 1300);
     }
     else {
+        
         toast.classList.add('toast2');
         toast.textContent = msgText;
         document.body.appendChild(toast);
@@ -271,6 +276,3 @@ function popupNotification(msg, msgText) {
         }, 1300);
     }
 }
-
-document.getElementById('tasklist1').innerHTML = 'Task In Process - '+listLength
-document.getElementById('compList1').innerHTML = 'Task Completed - '+completedListLength

@@ -190,7 +190,6 @@ forward.addEventListener('click', (event) => {
     action == 'delete' && deleteList(wl);
 });
 
-
 forward2.addEventListener('click', (event) => {
     var target = event.target;
     var click = target.parentNode;
@@ -213,8 +212,7 @@ function completedMove(wl) {
     listCompleted();
 }
 
-// -------------------------------      Completed Function                                 ------------------------------------------
-
+// -------------------------------      Completed Function              ------------------------------------------
 function checkList(wl) {
     List = List.map((todo, index) => ({
         ...todo,
@@ -274,8 +272,12 @@ function popupNotification(msg, msgText) {
 
 function openForm() {
     document.getElementById("popup").style.display = "block";
-  }
-  
-  function closeForm() {
+}
+
+function closeForm() {
     document.getElementById("popup").style.display = "none";
-  }
+}
+var list1length = listLength;
+var comp1length = completedListLength;
+
+// export { list1length, comp1length };

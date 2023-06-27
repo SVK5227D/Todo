@@ -30,15 +30,10 @@ body {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-
-
 .wrapper {
     display: flex;
     position: relative;
 }
-
-
-
 
 .sidebar ul li {
     padding: 5%;
@@ -46,7 +41,6 @@ body {
 
 .sidebar ul li a {
     color: #bdb8d7;
-    /* display: block; */
 }
 
 .sidebar ul li:hover {
@@ -62,8 +56,6 @@ body {
 #form {
     padding-left: 5%;
 }
-
-
 
 .backgroundbody {
     height: 100%;
@@ -162,7 +154,11 @@ body {
     background-color: #68686b;
     width: 70%;
     margin-left: 15%;
-    height: 450px;
+    width: 70%;
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .taskValueShow div p {
@@ -236,10 +232,13 @@ body {
 
     .toast2 {
         position: absolute;
-        left: 35%;
-        top: 22%;
+        top: 12%;
+        margin-left: 81.5%;
         font-size: larger;
-        color: rgb(0, 231, 46);
+        padding: 0.5%;
+        transform: translateX(-50%);
+        background-color: rgb(0, 231, 46);
+        color: #000000;
         font-weight: bolder;
         border-radius: 5px;
     }
@@ -256,13 +255,14 @@ body {
     }
 
     #deletebutton {
-        position: absolute;
+        top: 0.5%;
+        margin-left: 5%;
         left: 85%;
     }
 
     #editbutton {
-        position: absolute;
-        left: 75%;
+        top: 2%;
+        left: 70%;
     }
 
     .btnedit {
@@ -304,7 +304,9 @@ body {
     }
 
     .value {
+        display: flex;
         margin-left: 2%;
+        width: 65%;
     }
 }
 
@@ -334,7 +336,7 @@ body {
     .toast {
         position: absolute;
         left: 35%;
-        top: 22%;
+        top: 20%;
         font-size: larger;
         color: rgb(234, 87, 87);
         font-weight: bolder;
@@ -343,10 +345,13 @@ body {
 
     .toast2 {
         position: absolute;
-        left: 35%;
-        top: 22%;
+        top: 12%;
+        margin-left: 81.5%;
         font-size: larger;
-        color: rgb(0, 231, 46);
+        padding: 0.5%;
+        transform: translateX(-50%);
+        background-color: rgb(0, 231, 46);
+        color: #000000;
         font-weight: bolder;
         border-radius: 5px;
     }
@@ -363,13 +368,14 @@ body {
     }
 
     #deletebutton {
-        position: absolute;
-        left: 85%;
+        top: 0.5%;
+        margin-left: 5%;
+        left: 95%;
     }
 
-    #editbutton {
-        position: absolute;
-        left: 75%;
+    #editbutton { 
+        top: 0.5%;       
+        left: 60%;
     }
 
     .btnedit {
@@ -391,8 +397,10 @@ body {
         position: relative;
         border: 8px solid #17181F;
         background-color: #68686b;
+        height: auto;
         padding: 2.5%;
         border-radius: 25px;
+        word-break: break-all;
     }
 
     .sidebar {
@@ -411,7 +419,9 @@ body {
     }
 
     .value {
+        display: flex;
         margin-left: 2%;
+        width: 65%;
     }
 }
 
@@ -433,16 +443,18 @@ body {
     }
 
     #deletebutton {
-        position: absolute;
-        left: 82%;
+        top: 0.5%;
+        margin-left: 5%;
+        left: 85%;
     }
 
     #editbutton {
-        position: absolute;
+        top: 0.5%;
         left: 65%;
     }
 
     .value {
+        margin-top: 4%;
         margin-left: 3.5%;
         max-width: 45%;
     }
@@ -476,7 +488,6 @@ body {
     }
 
     .outerinput {
-        /* margin-left: %;  */
         border-radius: 5px;
         width: auto;
     }
@@ -508,10 +519,13 @@ body {
 
     .toast2 {
         position: absolute;
-        left: 13%;
-        top: 12%;
-        font-size: medium;
-        color: rgb(0, 231, 46);
+        bottom: 50%;
+        right: 29%;
+        font-size: larger;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        background-color: rgb(0, 231, 46);
+        color: #000000;
         font-weight: bolder;
         border-radius: 5px;
     }
@@ -524,6 +538,7 @@ body {
         width: auto;
         padding: 5.5%;
         border-radius: 25px;
+        word-break: break-all;
     }
 
     .head {
@@ -557,29 +572,34 @@ body {
     .view {
         padding-left: 10%;
     }
+
     .taskValueShow {
         background-color: #68686b;
         width: 70%;
         margin-left: 15%;
-        height: 450px;
+        width: 70%;
+        height: auto;
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
-    
+
     .taskValueShow div p {
         color: #ffffff;
         margin-left: 14%;
         padding: 1%;
         font-size: x-large;
     }
-    
+
     .taskValueShow div h3 {
         padding: 3%;
         font-size: 25px;
         margin-left: 2%;
     }
-    
+
 }
 
-.scrolltask{
+.scrolltask {
     width: 70%;
     height: auto;
     max-height: 300px;
@@ -660,16 +680,6 @@ body {
     overflow-x: hidden;
 }
 
-.mobileview #deletebutton {
-    position: absolute;
-    left: 82%;
-}
-
-.mobileview #editbutton {
-    position: absolute;
-    left: 65%;
-}
-
 .mobileview .checked {
     text-decoration: line-through;
 }
@@ -682,5 +692,4 @@ body {
 .mobileview .value {
     margin: 0.10%;
     margin-left: 2.54%;
-    /* margin-bottom: 5%; */
 }

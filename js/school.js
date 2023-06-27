@@ -9,9 +9,9 @@ var forward2 = document.getElementById("completedList")
 let schoolList = JSON.parse(localStorage.getItem('schoolList')) || [];
 let listLength4 = schoolList.length;
 let schoolCompletedList = JSON.parse(localStorage.getItem('schoolCompletedList')) || [];
-let completedListLength4 = schoolCompletedList.length;
+let completedlistLength4 = schoolCompletedList.length;
 //array to store
-let editlist4 = -1;
+let editList4 = -1;
 // Passing empty value for toast message
 let msgText4;
 //Calling function to getvalue in localstorage
@@ -43,7 +43,7 @@ function add() {
     }
     //Checking the duplicate value before storig list
     else if (isDuplicate) {
-        if (editlist4 >= 0) {
+        if (editList4 >= 0) {
             input.value = '';
             document.getElementById('btn').innerHTML = "+";
             msgText4 = "There is no changes in your todo";
@@ -56,12 +56,12 @@ function add() {
     }
     //Adding and editing
     else {
-        if (editlist4 >= 0) {
+        if (editList4 >= 0) {
             schoolList = schoolList.map((q, index) => ({
                 ...q,
-                value: index == editlist4 ? inputValue : q.value,
+                value: index == editList4 ? inputValue : q.value,
             }))
-            editlist4 = -1;
+            editList4 = -1;
             // Changing the button "+" after saving the value
             document.getElementById('btn').innerHTML = "+";
             // Clearing the inputfield after edting the value
@@ -82,7 +82,7 @@ function add() {
             popupNotification(1, msgText4);
         }
     }
-   
+    
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
@@ -102,10 +102,10 @@ function addingTodo(id) {
             localStorage.setItem('schoolList', JSON.stringify(schoolList));
             localStorage.setItem('schoolCompletedList', JSON.stringify(schoolCompletedList));
             listLength4 -= 1
-            completedListLength4 += 1
+            completedlistLength4 += 1
             document.getElementById('taskValue').innerHTML = "Task -  " + listLength4;
             console.log('List length' + listLength4);
-            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength4;
+            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedlistLength4;
             if (schoolList.length == 0) {
                 forward.innerHTML = '<center class ="valueMessage">Your Todo List has been empty</center>';
                 document.getElementById('taskValue').innerHTML = "Tasks - " + listLength4;
@@ -134,7 +134,7 @@ function addingTodo(id) {
 function listCompleted(id) {
     if (schoolCompletedList.length == 0) {
         forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
-        document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength4;
+        document.getElementById('completedListLength').innerHTML = "Completed - " + completedlistLength4;
         return;
     }
     // Clear the list before enter the value
@@ -147,13 +147,13 @@ function listCompleted(id) {
             localStorage.setItem('schoolList', JSON.stringify(schoolList));
             localStorage.setItem('schoolCompletedList', JSON.stringify(schoolCompletedList));
             listLength4 += 1
-            completedListLength4 -= 1
+            completedlistLength4 -= 1
             document.getElementById('taskValue').innerHTML = "Task -  " + listLength4;
-            console.log('List length' + listLength);
-            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength4;
+            console.log('List length' + listLength4);
+            document.getElementById('completedListLength').innerHTML = "Completed -  " + completedlistLength4;
             if (schoolCompletedList.length == 0) {
                 forward2.innerHTML = '<center class ="valueMessage">There is no Completed task</center>';
-                document.getElementById('completedListLength').innerHTML = "Completed - " + completedListLength4;
+                document.getElementById('completedListLength').innerHTML = "Completed - " + completedlistLength4;
                 return;
             }
         }
@@ -168,8 +168,8 @@ function listCompleted(id) {
     }
     );
     // Showing length in list
-    if (completedListLength4 > 0) {
-        document.getElementById('completedListLength').innerHTML = "Completed -  " + completedListLength4;
+    if (completedlistLength4 > 0) {
+        document.getElementById('completedListLength').innerHTML = "Completed -  " + completedlistLength4;
     }
     addingTodo();
 }
@@ -186,7 +186,7 @@ forward.addEventListener('click', (event) => {
     var action = target.dataset.action;
     //Calling function to Edit nor delete
     action == 'check' && checkList(wl);
-    action == 'edit' && editlist44(wl);
+    action == 'edit' && editList5(wl);
     action == 'delete' && deleteList(wl);
 });
 
@@ -211,6 +211,8 @@ function completedMove(wl) {
     addingTodo();
     listCompleted(wl);
     listCompleted();
+    msgText3 = "Your todo has been moved to task inprocess";
+    popupNotification(1, msgText3);
 }
 
 // -------------------------------      Completed Function                                 ------------------------------------------
@@ -222,14 +224,16 @@ function checkList(wl) {
     }));
     addingTodo(wl);
     listCompleted();
+    msgText3 = "Your todo has been completed";
+    popupNotification(1, msgText3);
 }
 
-// ------------------------------            editlist4 function          --------------------------------------------
-function editlist44(wl) {
+// ------------------------------            editList4 function          --------------------------------------------
+function editList5(wl) {
     
     document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
     input.value = schoolList[wl].value;
-    editlist4 = wl;
+    editList4 = wl;
 }
 
 //------------------------           Deleting Function while delete a value in list          --------------------------
@@ -271,8 +275,3 @@ function popupNotification(msg, msgText4) {
         }, 1300);
     }
 }
-
-document.getElementById('tasklist2').innerHTML = 'Task In Process - '+listLength4
-document.getElementById('compList2').innerHTML = 'Task Completed - '+completedListLength4
-
-

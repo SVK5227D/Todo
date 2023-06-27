@@ -279,3 +279,7 @@ function openForm() {
   function closeForm() {
     document.getElementById("popup").style.display = "none";
   }
+var list4length = listLength;
+var comp4length = completedListLength;
+
+// export { list4length, comp4length }

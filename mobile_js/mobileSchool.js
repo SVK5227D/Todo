@@ -276,6 +276,11 @@ function openForm() {
     document.getElementById("popup").style.display = "block";
   }
   
-  function closeForm() {
+function closeForm() {
     document.getElementById("popup").style.display = "none";
   }
+
+var list2length = listLength;
+var comp2length = completedListLength;
+
+// export { list2length, comp2length }

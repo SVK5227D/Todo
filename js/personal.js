@@ -82,7 +82,7 @@ function add() {
             popupNotification(1, msgText2);
         }
     }
-    
+
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
@@ -211,6 +211,8 @@ function completedMove(wl) {
     addingTodo();
     listCompleted(wl);
     listCompleted();
+    msgText3 = "Your todo has been moved to task inprocess";
+    popupNotification(1, msgText3);
 }
 
 // -------------------------------      Completed Function                                 ------------------------------------------
@@ -222,11 +224,13 @@ function checkList(wl) {
     }));
     addingTodo(wl);
     listCompleted();
+    msgText3 = "Your todo has been completed";
+    popupNotification(1, msgText3);
 }
 
 // ------------------------------            Editlist2 function          --------------------------------------------
 function editList2(wl) {
-    
+
     document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
     input.value = personalList[wl].value;
     EditList2 = wl;
@@ -271,6 +275,3 @@ function popupNotification(msg, msgText2) {
         }, 1300);
     }
 }
-
-document.getElementById('tasklist3').innerHTML = 'Task In Process - '+listLength2
-document.getElementById('compList3').innerHTML = 'Task Completed - '+completedListLength2
