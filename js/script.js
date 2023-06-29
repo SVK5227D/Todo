@@ -19,12 +19,10 @@ addingTodo();
 listCompleted();
 //submit
 form.addEventListener("submit", function (event) {
-    event.preventDefault();
     //Calling function to add into list
     add();
     //Calling function to viewing list in html
     addingTodo();
-    //
     listCompleted();
     //Adding the data into local storage
     localStorage.setItem("List", JSON.stringify(List));
@@ -48,6 +46,7 @@ function add() {
         if (EditList >= 0) {
             input.value = "";
             document.getElementById("btn").innerHTML = "Add";
+            debugger
             msgText = "There is no changes in your todo";
             popupNotification(1, msgText);
         } else {
@@ -78,6 +77,7 @@ function add() {
             // Clearing the Inputfield after entering the value
             input.value = "";
             listLength += 1;
+            debugger
             msgText = "Your new todo has been added";
             popupNotification(1, msgText);
         }
@@ -130,6 +130,7 @@ function addingTodo(id) {
     if (listLength > 0) {
         document.getElementById("taskValue").innerHTML = "Task -  " + listLength;
     }
+
     // listCompleted();
 }
 
@@ -256,15 +257,16 @@ function deleteList(wl) {
             localStorage.setItem("List", JSON.stringify(List));
         }
         localStorage.setItem("List", JSON.stringify(List));
+        msgText = "Todo has been deleted",
+            popupNotification(1, msgText)
         document.getElementById("id01").style.display = "none";
-        debugger
-        msgText = "Todo has been deleted";
-        popupNotification(1, msgText);
     });
+
 }
 
 //----------------------     Popup message ----------------------------
 function popupNotification(msg, msgText) {
+    // debugger
     const toast = document.createElement("div");
     if (msg == 0) {
         toast.classList.add("toast");
@@ -272,7 +274,7 @@ function popupNotification(msg, msgText) {
         document.body.appendChild(toast);
         setTimeout(() => {
             toast.remove();
-        }, 1300);
+        }, 2300);
     } else {
         let toast2 = document.getElementById("toast2");
         document.getElementById("msgTetxt").innerHTML = msgText;
@@ -280,9 +282,10 @@ function popupNotification(msg, msgText) {
         document.getElementById("toastCloseBtn").addEventListener("click", function () {
             toast2.classList.remove("toast-active");
         });
-        setTimeout(() => {
-            toast2.remove();
-        }, 3300);
+        // setTimeout(() => {
+        //     toast2.remove();
+        // }, 1300);
+        // toast2.clear();
     }
 }
 
