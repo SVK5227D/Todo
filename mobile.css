@@ -1,3 +1,34 @@
+.mobilview {
+    display: inline;
+}
+
+.webview {
+    display: none;
+}
+
+@media (min-width:700px) {
+    .webview {
+        display: block
+    }
+
+    .mobileview {
+        display: none
+    }
+}
+
+.frame {
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px
+}
+
 .backgroundbody {
     background-color: #0E0E13;
 }
@@ -23,7 +54,7 @@
     color: white;
     border-radius: 25PX;
     font-size: larger;
-    width: 45px;
+    width: 65px;
     height: 35px;
 }
 
@@ -99,7 +130,7 @@
     color: #ffff00;
 }
 
-.value{
+.value {
     display: flex;
     margin: 0.10%;
     margin-left: 2.54%;
@@ -128,7 +159,7 @@
 .form-popup {
     width: 60%;
     height: 180px;
-    background-color: #0E0E13;
+    background-color: #ffffff;
     display: none;
     position: fixed;
     top: 35%;
@@ -140,13 +171,15 @@
 
 .form-container h1 {
     text-align: center;
-    color: #fff;
+    color: #000000;
 }
 
 .inputfield {
-    height: 35px;
+    height: auto;
     background-color: transparent;
-    width: 80%;
+    width: auto;
+    max-width: 80%;
+    overflow-wrap: break-word;
     margin-left: 10%;
     padding-left: 2%;
     font-size: 15px;
@@ -156,7 +189,7 @@
 
 .popupButton {
     margin-top: 3%;
-    margin-left: 30%;
+    margin-left: 22%;
 }
 
 .toast {
@@ -177,7 +210,7 @@
     position: absolute;
     bottom: 50%;
     width: max-content;
-    margin-left: 45%;
+    margin-left: 48%;
     font-size: x-large;
     transform: translateX(-50%);
     padding: 10px 20px;
@@ -186,4 +219,3 @@
     font-weight: bolder;
     border-radius: 5px;
 }
-

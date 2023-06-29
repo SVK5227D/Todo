@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="../mobile.css">
 </head>
 <body class="backgroundbody">
-    <div>
+    <div class="webview">
+       <iframe src="../index.html" frameborder="0" class="frame"></iframe>
+    </div>
+    <div class="mobileview">
         <div class="heading">
             <button onclick="window.location.href='../index.html'" type="submit" id="homeBtn">&lt;</button><span>Home</span>           
         </div>
@@ -23,8 +26,8 @@
               autocomplete="off"
               >  
               <div class="popupButton">        
-              <button type="submit" id="btn">+</button>
-              <button type="button" id="btn" onclick="closeForm()"><i class="bi bi-x"></i></button>
+              <button type="submit" id="btn">Add</button>
+              <button type="button" id="btn" onclick="closeForm()">Close</button>
             </div>
             </form>
           </div>
@@ -45,11 +48,12 @@
                         <div id="completedList" class="view"></div>
                     </div>
                 </div>
+            </div>
+            <div class="addbutton">
+                <button onclick="openForm()">+</button>
             </div>            
         </div>
-        <div class="addbutton">
-            <button onclick="openForm()">+</button>
-        </div>
+        
     </div>
     <script src="../mobile_js/mobilescript.js"></script>
 </body>

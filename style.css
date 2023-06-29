@@ -2,24 +2,62 @@ html,
 body {
     margin: 0;
     height: 100%;
-    overflow: hidden
+    overflow: hidden;
 }
 
+/* .text {
+  color: white;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50px;
+  right: -500px;
+  background-color: black;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  border: 5px solid #029c91;
+  opacity: 0%;
+  transition: all 0.25s ease-out;
+}
+
+.show-toast {
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.toast-active {
+  right: 80px;
+  opacity: 100%;
+}
+
+.toastCloseBtn {
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+} */
+
 .mobileview {
-    display: none
+    display: none;
 }
 
 .webview {
-    display: block
+    display: block;
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .webview {
-        display: none
+        display: none;
     }
 
     .mobileview {
-        display: block
+        display: block;
     }
 }
 
@@ -27,7 +65,128 @@ body {
     margin: 0;
     padding: 0;
     text-decoration: none;
-    font-family: 'Josefin Sans', sans-serif;
+    list-style: none;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.mobileSidebarView {
+    position: fixed;
+    left: -550px;
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    transition: all 0.5s ease;
+}
+
+.mobileSidebarView header {
+    font-size: 25px;
+    text-align: center;
+    color: #fff;
+    height: 8%;
+    background-color: rgb(219, 44, 44);
+    user-select: none;
+}
+
+.headerText {
+    padding-top: 8%;
+}
+
+.modal {
+    display: none;
+}
+
+.modal-content {
+    width: max-content;
+    padding: 2%;
+    background-color: #ffffff;
+    position: fixed;
+    top: 35%;
+    right: 35%;
+    border: 3px solid transparent;
+    z-index: 9;
+    border-radius: 25px;
+}
+
+.container p {
+    font-size: 18px;
+}
+
+.clearfix {
+    padding-top: 5%;
+    text-align: center;
+}
+
+.clearfix button {
+    padding: 1%;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.clearfix button:hover {
+    background-color: #ef7098;
+    color: #fff;
+    font-weight: bolder;
+    transition: all 0.5s ease;
+    padding: 1%;
+    font-size: 15px;
+}
+
+.mobileSidebarView ul a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 55px;
+    font-size: 20px;
+    padding-left: 15%;
+    box-sizing: border-box;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+
+.mobileSidebarView ul a i {
+    margin-right: 8%;
+}
+
+#MobileCheck {
+    display: none;
+}
+
+label #sidebarShow,
+label #sidebarCancel {
+    position: absolute;
+    cursor: pointer;
+}
+
+label #sidebarShow {
+    left: 5%;
+    top: 5%;
+    font-size: 25px;
+    color: #ffffff;
+    transition: all 0.5s;
+}
+
+label #sidebarCancel {
+    z-index: 15;
+    left: -150px;
+    top: 0.5%;
+    font-size: 25px;
+    color: #000000;
+    padding: 4px 9px;
+    transition: all 0.5s;
+}
+
+#MobileCheck:checked~.mobileSidebarView {
+    left: 0;
+}
+
+#MobileCheck:checked~label #sidebarShow {
+    left: 15%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#MobileCheck:checked~label #sidebarCancel {
+    left: 150px;
 }
 
 .wrapper {
@@ -47,6 +206,16 @@ body {
     background-color: #594f8d;
 }
 
+.showMenuButton {
+    margin: 10%;
+    width: 30px;
+}
+
+.menuButton {
+    margin-top: 10%;
+    margin-left: 70%;
+    font-size: large;
+}
 
 .outerinput2 h3 {
     text-align: center;
@@ -86,23 +255,23 @@ body {
     height: 40px;
     width: 50px;
     font-size: large;
-    background-color: #EF7098;
+    background-color: #ef7098;
 }
 
 #btn:hover {
-    border: 3px solid #EF7098;
+    border: 3px solid #ef7098;
     background-color: transparent;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 #btn:active {
     transform: translateY(4px);
-    background-color: #36D72F;
+    background-color: #36d72f;
 }
 
 .btnedit:hover,
 .btndelete:hover {
-    background-color: #0089E2;
+    background-color: #0089e2;
     border: 2px solid black;
 }
 
@@ -118,7 +287,7 @@ body {
 .btnedit:active,
 .btndelete:active {
     transform: translateY(4px);
-    background-color: #36D72F;
+    background-color: #36d72f;
 }
 
 #listValue {
@@ -140,6 +309,16 @@ body {
 
 .mobilehead {
     justify-content: center;
+}
+
+#mySidebar {
+    display: none;
+}
+
+.sidebarView {
+    height: 100%;
+    background-color: #fff;
+    overflow: hidden;
 }
 
 .mobilesidebar {
@@ -183,18 +362,17 @@ body {
 }
 
 .mobilesidebar ul li a {
-    font-size: x-large;
-    color: #bdb8d7;
+    font-size: large;
 }
 
 .mobileheading {
-    font-size: 35px;
+    font-size: 20px;
     color: red;
 }
 
 .mobilesidebar ul {
-    margin-top: 3%;
-    left: 2%;
+    /* margin-top: 3%; */
+    left: 0.5%;
 }
 
 @media (max-width: 2000px) {
@@ -206,7 +384,7 @@ body {
     }
 
     body {
-        background-color: #17181F;
+        background-color: #17181f;
     }
 
     .backgroundbody {
@@ -228,19 +406,52 @@ body {
         color: rgb(234, 87, 87);
         font-weight: bolder;
         border-radius: 5px;
-    }
 
+    }
+    
+    .icon {
+      height: 2rem;
+      width: 2rem;
+      margin-right: 1rem;
+      color: white;
+    }
+    
+    .msgTetxt {
+      color: white;
+    }
+    
     .toast2 {
-        position: absolute;
-        top: 12%;
-        margin-left: 81.5%;
-        font-size: larger;
-        padding: 0.5%;
-        transform: translateX(-50%);
-        background-color: rgb(0, 231, 46);
-        color: #000000;
-        font-weight: bolder;
-        border-radius: 5px;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 50px;
+      right: -500px;
+      background-color: black;
+      border-radius: 12px;
+      padding: 0.5rem 1rem;
+      border: 5px solid #029c91;
+      opacity: 0%;
+      transition: all 0.25s ease-out;
+    }
+    
+    .show-toast {
+      background-color: black;
+      color: white;
+      border-radius: 8px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    
+    .toast-active {
+      right: 80px;
+      opacity: 100%;
+    }
+    
+    .toastCloseBtn {
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
     }
 
     .head {
@@ -267,14 +478,14 @@ body {
 
     .btnedit {
         cursor: pointer;
-        background-color: #EF7098;
+        background-color: #ef7098;
         width: 40px;
         height: 25px;
     }
 
     .btndelete {
         cursor: pointer;
-        background-color: #EF7098;
+        background-color: #ef7098;
         width: 40px;
         height: 25px;
     }
@@ -282,7 +493,7 @@ body {
     .listview {
         display: flex;
         position: relative;
-        border: 8px solid #17181F;
+        border: 8px solid #17181f;
         background-color: #68686b;
         padding: 2.5%;
         border-radius: 25px;
@@ -291,7 +502,7 @@ body {
     .sidebar {
         width: 200px;
         height: 100%;
-        background: #20212B;
+        background: #20212b;
         padding: 30px 0px;
         position: fixed;
     }
@@ -319,7 +530,7 @@ body {
     }
 
     body {
-        background-color: #17181F;
+        background-color: #17181f;
     }
 
     .backgroundbody {
@@ -336,24 +547,58 @@ body {
     .toast {
         position: absolute;
         left: 35%;
-        top: 20%;
+        top: 22%;
         font-size: larger;
         color: rgb(234, 87, 87);
         font-weight: bolder;
         border-radius: 5px;
     }
 
-    .toast2 {
-        position: absolute;
-        top: 12%;
-        margin-left: 81.5%;
-        font-size: larger;
-        padding: 0.5%;
-        transform: translateX(-50%);
-        background-color: rgb(0, 231, 46);
+    .icon {
+        height: 2rem;
+        width: 2rem;
+        margin-right: 1rem;
+        color: white;
+    }
+
+    .msgTetxt {
         color: #000000;
-        font-weight: bolder;
-        border-radius: 5px;
+    }
+
+    .toast2 {
+        width: max-content;
+        max-width: 40%;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 50px;
+        right: -500px;
+        background-color: rgb(0, 231, 46);
+        border-radius: 12px;
+        padding: 0.5rem 1rem;
+        opacity: 0%;
+        transition: all 0.25s ease-out;
+    }
+
+    .show-toast {
+        background-color: black;
+        color: white;
+        border-radius: 8px;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    .toast-active {
+        right: 80px;
+        opacity: 100%;
+    }
+
+    .toastCloseBtn {
+        background-color: rgb(223, 22, 22);
+        padding: 1%;
+        color: white;
+        border: none;
+        cursor: pointer;
     }
 
     .head {
@@ -373,21 +618,21 @@ body {
         left: 95%;
     }
 
-    #editbutton { 
-        top: 0.5%;       
+    #editbutton {
+        top: 0.5%;
         left: 60%;
     }
 
     .btnedit {
         cursor: pointer;
-        background-color: #EF7098;
+        background-color: #ef7098;
         width: 40px;
         height: 25px;
     }
 
     .btndelete {
         cursor: pointer;
-        background-color: #EF7098;
+        background-color: #ef7098;
         width: 40px;
         height: 25px;
     }
@@ -395,7 +640,7 @@ body {
     .listview {
         display: flex;
         position: relative;
-        border: 8px solid #17181F;
+        border: 8px solid #17181f;
         background-color: #68686b;
         height: auto;
         padding: 2.5%;
@@ -406,7 +651,7 @@ body {
     .sidebar {
         width: 200px;
         height: 100%;
-        background: #20212B;
+        background: #20212b;
         padding: 30px 0px;
         position: fixed;
     }
@@ -425,56 +670,50 @@ body {
     }
 }
 
-@media (max-width: 760) {
-    .sideBarheading {
+@media (max-width: 760px) {
+    .backgroundbody {
+        background-color: #0e0e13;
+    }
+
+    .heading {
+        margin-top: 12%;
+        margin-left: 10%;
+    }
+
+    .heading a {
+        background-color: transparent;
+        color: #fff;
+    }
+
+    .heading span {
+        padding-left: 2.5%;
+        font-size: 25px;
+        color: #ffffff;
+    }
+
+    #btn {
+        background-color: #20212b;
+        color: white;
+        border-radius: 25px;
         font-size: larger;
-        text-align: center;
-        margin: 15px;
-        color: yellow;
+        width: 65px;
+        height: 35px;
     }
 
-    body {
-        background-color: #0089E2;
-    }
-
-    .collectionmobile {
-        display: flex;
-        justify-content: center;
-    }
-
-    #deletebutton {
-        top: 0.5%;
-        margin-left: 5%;
-        left: 85%;
-    }
-
-    #editbutton {
-        top: 0.5%;
-        left: 65%;
-    }
-
-    .value {
-        margin-top: 4%;
-        margin-left: 3.5%;
-        max-width: 45%;
+    #homeBtn {
+        background-color: #20212b;
+        color: white;
+        border-radius: 25px;
+        font-size: larger;
+        width: 45px;
+        height: 35px;
     }
 
     .outerinput2 {
         margin-top: 10%;
-        border-radius: 2%;
         color: #fff;
-        width: 65%;
-    }
-
-    .webview {
-        grid-template-columns: 1fr;
-    }
-
-    .scroll {
-        width: 150%;
-        height: 350px;
-        overflow-y: auto;
-        overflow-x: hidden;
+        width: 50%;
+        margin-left: 10%;
     }
 
     .outerinput2 h3 {
@@ -482,37 +721,129 @@ body {
         font-size: 20px;
     }
 
-    .backgroundbody {
-        margin-left: 0;
-        padding: 20px;
+    .listview {
+        display: flex;
+        position: relative;
+        border: 8px solid #17181f;
+        background-color: #68686b;
+        height: auto;
+        padding: 2.5%;
+        border-radius: 25px;
+        word-break: break-all;
     }
 
-    .outerinput {
-        border-radius: 5px;
-        width: auto;
+    .btnedit {
+        background-color: #ef7098;
+        right: 25%;
+        width: 40px;
+        height: 25px;
     }
 
-    .sidebarIcon {
-        margin-left: 15px;
+    .btndelete {
+        right: 15%;
+        background-color: #ef7098;
+        width: 40px;
+        height: 25px;
+    }
+
+    .scroll {
+        width: 150%;
+        height: fit-content;
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #deletebutton {
+        margin-left: 2%;
+        left: 80%;
+    }
+
+    #editbutton {
+        left: 63%;
+    }
+
+    .checked {
+        text-decoration: line-through;
+    }
+
+    .check {
+        justify-content: left;
+        color: #ffff00;
+    }
+
+    .value {
+        display: flex;
+        margin: 0.1%;
+        margin-left: 2.54%;
+        width: 55%;
+    }
+
+    .addbutton {
+        margin-top: 1%;
+        text-align: center;
+    }
+
+    .addbutton button {
+        text-align: center;
+        width: 15%;
+        height: 10%;
+        border-radius: 25px;
+        font-size: 25px;
+        color: white;
+        background-image: linear-gradient(to left bottom,
+                #ffff00,
+                #ef7098,
+                #ef7098,
+                #ef7098);
+    }
+
+    .form-popup {
+        width: 60%;
+        height: 180px;
+        background-color: #ffffff;
+        display: none;
+        position: fixed;
+        top: 35%;
+        right: 25%;
+        border: 3px solid transparent;
+        z-index: 9;
+        border-radius: 25px;
+    }
+
+    .form-container h1 {
+        text-align: center;
+        color: #000000;
     }
 
     .inputfield {
-        height: 35px;
+        height: auto;
         background-color: transparent;
-        width: 65%;
-        padding-left: 10%;
+        width: auto;
+        max-width: 80%;
+        overflow-wrap: break-word;
+        margin-left: 10%;
+        padding-left: 2%;
         font-size: 15px;
-        border-radius: 20px;
-        color: #ffffff;
+        border-radius: 30px;
+        color: #ef7098;
+    }
+
+    .popupButton {
+        margin-top: 3%;
+        margin-left: 22%;
     }
 
     .toast {
-        font-size: small;
         position: absolute;
-        left: 10%;
-        top: 13%;
-        font-size: larger;
-        color: rgb(234, 87, 87);
+        bottom: 50%;
+        width: max-content;
+        margin-left: 48%;
+        font-size: x-large;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        background-color: rgb(234, 87, 87);
+        color: #000000;
         font-weight: bolder;
         border-radius: 5px;
     }
@@ -520,8 +851,9 @@ body {
     .toast2 {
         position: absolute;
         bottom: 50%;
-        right: 29%;
-        font-size: larger;
+        width: max-content;
+        margin-left: 48%;
+        font-size: x-large;
         transform: translateX(-50%);
         padding: 10px 20px;
         background-color: rgb(0, 231, 46);
@@ -530,73 +862,10 @@ body {
         border-radius: 5px;
     }
 
-    .listview {
-        border: 8px solid #17181F;
-        padding: 45%;
-        background-color: #68686b;
-        height: auto;
-        width: auto;
-        padding: 5.5%;
-        border-radius: 25px;
-        word-break: break-all;
+    section {
+        margin-top: 25%;
+        height: 100%;
     }
-
-    .head {
-        justify-content: center;
-        font-size: medium;
-        color: white;
-        margin-left: 38%;
-        margin-bottom: 4%;
-        font-size: x-large;
-    }
-
-    .btnedit {
-        background-color: #EF7098;
-        right: 25%;
-        width: 40px;
-        height: 25px;
-    }
-
-    .valueMessage {
-        margin-top: 12%;
-        margin-left: 15%;
-    }
-
-    .btndelete {
-        right: 15%;
-        background-color: #EF7098;
-        width: 40px;
-        height: 25px;
-    }
-
-    .view {
-        padding-left: 10%;
-    }
-
-    .taskValueShow {
-        background-color: #68686b;
-        width: 70%;
-        margin-left: 15%;
-        width: 70%;
-        height: auto;
-        max-height: 300px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    .taskValueShow div p {
-        color: #ffffff;
-        margin-left: 14%;
-        padding: 1%;
-        font-size: x-large;
-    }
-
-    .taskValueShow div h3 {
-        padding: 3%;
-        font-size: 25px;
-        margin-left: 2%;
-    }
-
 }
 
 .scrolltask {
@@ -608,7 +877,7 @@ body {
 }
 
 /* MObile style */
-.mobileview .backgroundbody {
+/* .mobileview .backgroundbody {
     background-color: #0E0E13;
 }
 
@@ -692,4 +961,4 @@ body {
 .mobileview .value {
     margin: 0.10%;
     margin-left: 2.54%;
-}
+} */

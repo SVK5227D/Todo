@@ -225,7 +225,7 @@ function checkList(wl) {
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
     document.getElementById("popup").style.display = "block";
-    document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
+    document.getElementById('btn').innerHTML = 'Save';
     input.value = List[wl].value;
     EditList = wl;
 }
