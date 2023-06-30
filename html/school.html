@@ -59,12 +59,31 @@
                             <button type="submit" id="btn">+</button>
                             <span id="toast"></span>
                         </form>
+                        <div class="toast2" id="toast2">
+                            <p class="msgTetxt" id="msgTetxt"></p>
+                            <button id="toastCloseBtn" class="toastCloseBtn">&#10005;</button>
+                          </div>
                     </div>
                 </div>
+                <div id="id01" class="modal">
+                    <form class="modal-content">
+                      <div class="container">
+                        <p>Are you sure you want to delete your todo?</p>
+                        <div class="clearfix">
+                          <button type="button" onclick="formClose()" class="cancelbtn">
+                            Cancel
+                          </button>
+                          <button type="click" id="deleteValue" class="deletebtn">
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 <div class="outerinput2">
                     <h3>Todo's List</h3>
                     <!-- To view the task after add,delete,edit  -->
-                    <div style="margin-top: 3%;">
+                    <div style="margin-top: 3%">
                         <p id="taskValue"></p>
                         <div class="scroll">
                             <div id="list" class="view"></div>
@@ -81,37 +100,37 @@
                 </div>
             </div>
             <div class="mobileview">
-                <div>
-                    <div class="mobilesidebar" id="sidebar">
-                        <h2 class="mobileheading">Collections</h2>
-                        <ul>
-                            <li class="collectionsListView">
-                                <a href="../mobile_view/mobilehome.html">
-                                    <i class="bi bi-house sidebarIcon"></i>
-                                    <span style="padding:2% ;"></span>Home
-                                </a>
-                            </li>
-                            <li class="collectionsListView">
-                                <a href="../mobile_view/mobileschool.html">
-                                    <i class="bi bi-book sidebarIcon"></i>
-                                    <span style="padding:2% ;"></span>School
-                                </a>
-                            </li>
-                            <li class="collectionsListView">
-                                <a href="../mobile_view/mobilePersonal.html">
-                                    <i class="bi bi-person sidebarIcon"></i>
-                                    <span style="padding:2% ;"></span>Personal
-                                </a>
-                            </li>
-                            <li class="collectionsListView">
-                                <a href="../mobile_view/mobileDesign.html">
-                                    <i class="bi bi-pencil sidebarIcon"></i>
-                                    <span style="padding:2% ;"></span>Design
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <input type="checkbox" id="MobileCheck" />
+                <label for="MobileCheck">
+                  <i class="bi bi-list" id="sidebarShow"></i>
+                  <i class="bi bi-x-circle" id="sidebarCancel"></i>
+                </label>
+                <div class="mobileSidebarView">
+                  <header class="headerText">Collections</header>
+                  <ul>
+                    <li>
+                      <a href="mobile_view/mobilehome.html"
+                        ><i class="bi bi-house"></i>Home</a
+                      >
+                    </li>
+                    <li>
+                      <a href="mobile_view/mobileschool.html"
+                        ><i class="bi bi-book"></i>School</a
+                      >
+                    </li>
+                    <li>
+                      <a href="mobile_view/mobilepersonal.html"
+                        ><i class="bi bi-person"></i>Person</a
+                      >
+                    </li>
+                    <li>
+                      <a href="mobile_view/mobiledesign.html"
+                        ><i class="bi bi-pencil"></i>Design</a
+                      >
+                    </li>
+                  </ul>
                 </div>
+              </div>
                 <script src="../js/school.js"></script>
             </body>
         </html>
