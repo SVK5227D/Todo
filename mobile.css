@@ -16,6 +16,85 @@
     }
 }
 
+.modal {
+    display: none;
+}
+
+.modal-content {
+    width: max-content;
+    padding: 2%;
+    background-color: #ffffff;
+    position: fixed;
+    top: 30%;
+    right: 5%;
+    border: 3px solid transparent;
+    z-index: 9;
+    border-radius: 25px;
+}
+
+.container p {
+    font-size: 18px;
+}
+
+.clearfix {
+    padding-top: 5%;
+    text-align: center;
+}
+
+.clearfix button {
+    padding: 1%;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.clearfix button:hover {
+    background-color: #ef7098;
+    color: #fff;
+    font-weight: bolder;
+    transition: all 0.5s ease;
+    padding: 1%;
+    font-size: 15px;
+}
+
+.msgTetxt {
+    color: white;
+}
+
+.toast2 {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50px;
+    right: -500px;
+    background-color: black;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    border: 5px solid #029c91;
+    opacity: 0%;
+    transition: all 0.25s ease-out;
+}
+
+.show-toast {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.toast-active {
+    right: 0;
+    /* max-width: 25%; */
+    opacity: 100%;
+}
+
+.toastCloseBtn {
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
 .frame {
     overflow: hidden;
     overflow-x: hidden;
@@ -157,13 +236,13 @@
 }
 
 .form-popup {
-    width: 60%;
+    width: 35%;
     height: 180px;
     background-color: #ffffff;
     display: none;
     position: fixed;
-    top: 35%;
-    right: 25%;
+    top: 25%;
+    right: 60%;
     border: 3px solid transparent;
     z-index: 9;
     border-radius: 25px;
@@ -201,20 +280,6 @@
     transform: translateX(-50%);
     padding: 10px 20px;
     background-color: rgb(234, 87, 87);
-    color: #000000;
-    font-weight: bolder;
-    border-radius: 5px;
-}
-
-.toast2 {
-    position: absolute;
-    bottom: 50%;
-    width: max-content;
-    margin-left: 48%;
-    font-size: x-large;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    background-color: rgb(0, 231, 46);
     color: #000000;
     font-weight: bolder;
     border-radius: 5px;

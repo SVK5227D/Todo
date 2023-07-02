@@ -45,7 +45,7 @@ function add() {
     else if (isDuplicate) {
         if (editlisttochange >= 0) {
             input.value = '';
-            document.getElementById('btn').innerHTML = "+";
+            document.getElementById('btn').innerHTML = "Save";
             msgText3 = "There is no changes in your todo";
             popupNotification(1, msgText3);
         }
@@ -82,7 +82,7 @@ function add() {
             popupNotification(1, msgText3);
         }
     }
-    
+
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
@@ -227,16 +227,16 @@ function checkList(wl) {
 
 // ------------------------------            editlisttochange function          --------------------------------------------
 function editlist3(wl) {
-    document.getElementById('btn').innerHTML = '<i class="bi bi-save"></i>';
+    document.getElementById('btn').innerHTML = 'Save';
     input.value = designList[wl].value;
     editlisttochange = wl;
 }
 
 //------------------------           Deleting Function while delete a value in list          --------------------------
 function deleteList(wl) {
-    var con = confirm("Are you sure you want to delete this todo?");
-    //Checking condition is true or false
-    if (con) {
+    document.getElementById("id01").style.display = "block";
+    var removeValue = document.getElementById("deleteValue");
+    removeValue.addEventListener("click", function (event) {
         designList = designList.filter((h, index) => wl != index);
         //Calling Function changes in list
         listLength3 -= 1;
@@ -248,7 +248,8 @@ function deleteList(wl) {
         msgText3 = "Todo has been deleted";
         popupNotification(1, msgText3)
         localStorage.setItem('designList', JSON.stringify(designList));
-    }
+        document.getElementById("id01").style.display = "none";
+    });
 }
 
 //----------------------     Popup message              ----------------------------
@@ -263,11 +264,15 @@ function popupNotification(msg, msgText3) {
         }, 1300);
     }
     else {
-        toast.classList.add('toast2');
-        toast.textContent = msgText3;
-        document.body.appendChild(toast);
-        setTimeout(() => {
-            toast.remove();
-        }, 1300);
+        let toast2 = document.getElementById("toast2");
+        document.getElementById("msgTetxt").innerHTML = msgText3;
+        toast2.classList.add("toast-active");
+        document.getElementById("toastCloseBtn").addEventListener("click", function () {
+            toast2.classList.remove("toast-active");
+        });
     }
+}
+
+function formClose() {
+    document.getElementById("id01").style.display = "none";
 }

@@ -45,7 +45,7 @@ function add() {
     else if (isDuplicate) {
         if (editList4 >= 0) {
             input.value = '';
-            document.getElementById('btn').innerHTML = "+";
+            document.getElementById('btn').innerHTML = "Save";
             msgText4 = "There is no changes in your todo";
             popupNotification(1, msgText4);
         }
@@ -211,8 +211,8 @@ function completedMove(wl) {
     addingTodo();
     listCompleted(wl);
     listCompleted();
-    msgText3 = "Your todo has been moved to task inprocess";
-    popupNotification(1, msgText3);
+    msgText4 = "Your todo has been moved to task inprocess";
+    popupNotification(1, msgText4);
 }
 
 // -------------------------------      Completed Function                                 ------------------------------------------
@@ -224,8 +224,8 @@ function checkList(wl) {
     }));
     addingTodo(wl);
     listCompleted();
-    msgText3 = "Your todo has been completed";
-    popupNotification(1, msgText3);
+    msgText4 = "Your todo has been completed";
+    popupNotification(1, msgText4);
 }
 
 // ------------------------------            editList4 function          --------------------------------------------
@@ -275,4 +275,8 @@ function popupNotification(msg, msgText4) {
             toast2.classList.remove("toast-active");
         });
     }
+}
+
+function formClose() {
+    document.getElementById("id01").style.display = "none";
 }
